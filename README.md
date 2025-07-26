@@ -1,240 +1,140 @@
-Writen in Indonesian.
+# Laravel LMS - Platform E-Learning Internal Organisasi
+
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php)
+![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
+
+Selamat datang di Laravel LMS! Project ini adalah sebuah platform Learning Management System (LMS) open-source yang dibangun dengan Laravel 12. Awalnya dirancang dengan fitur pembayaran, kini project ini telah dirombak total menjadi **100% gratis** dan ditujukan untuk menjadi solusi e-learning internal bagi organisasi, perusahaan, atau komunitas yang ingin mengelola materi pelatihan mereka sendiri.
+
+Project ini sangat cocok sebagai starter-kit atau bahan belajar bagi developer yang ingin memahami cara kerja aplikasi LMS yang modular dengan sistem multi-autentikasi di Laravel.
+
+## Fitur Utama
+
+Platform ini membagi fungsionalitas berdasarkan 4 peran pengguna yang berbeda, memastikan manajemen yang terstruktur dan pengalaman belajar yang fokus.
+
+#### System Admin (SysAdmin)
+Super user yang memiliki kendali penuh atas seluruh platform.
+- Manajemen Akun: Membuat, mengubah, dan menghapus akun Course Admin, Lecturer, dan Student.
+- Manajemen Kategori: Mengelola kategori dan sub-kategori kursus secara global.
+- Dashboard Statistik: Melihat ringkasan jumlah pengguna dan konten di seluruh sistem.
+
+#### Course Admin
+Penanggung jawab yang bertugas membuat dan mengelola konten kursus.
+- Manajemen Kursus: Membuat, mengubah, dan menghapus kursus.
+- Manajemen Topik & Materi: Menyusun kurikulum dengan menambahkan topik, video (YouTube), materi Google Drive, dan kuis.
+- Manajemen Soal Kuis: Membuat soal pilihan ganda beserta kunci jawaban untuk setiap kuis.
+- Penugasan Dosen: Menugaskan satu atau lebih dosen (Lecturer) untuk mengampu sebuah kursus.
+
+#### Lecturer (Dosen)
+Pengajar yang bertugas memantau perkembangan siswa di kursus yang diampunya.
+- Dashboard Dosen: Melihat ringkasan jumlah kursus yang diampu dan total siswa.
+- Pemantauan Progres Siswa: Melihat daftar siswa di setiap kursus beserta persentase progres belajar mereka.
+
+#### Student (Siswa)
+Peserta yang mengikuti dan menyelesaikan kursus.
+- Katalog Kursus: Mencari dan mendaftar ke kursus yang tersedia.
+- Halaman Belajar: Mengakses materi kursus (video, GDrive, kuis) secara berurutan.
+- Sistem Progres: Materi baru akan terbuka setelah topik sebelumnya diselesaikan 100%.
+- Manajemen Profil: Mengubah data diri dan password.
+- Sertifikat Otomatis: Mendapatkan sertifikat digital setelah menyelesaikan kursus 100%, lengkap dengan link verifikasi publik yang unik.
 
 ---
 
-# Konsep Buku Aplikasi LMS dengan Laravel Native
+## Tumpukan Teknologi
 
-Buku ini akan memandu Master Kiannara dalam membangun aplikasi Learning Management System (LMS) dari awal menggunakan Laravel 12 secara native. Stack yang digunakan meliputi Laravel 12, Blade, Tailwind CSS via CDN, SQLite sebagai database lokal, dan Apache2 sebagai server lokal atau produksi ringan.
-
-Proyek akan dibagi dalam dua tahap:
-
-* Minggu 1 dan 2: pengembangan prototipe dasar
-* Minggu 3 dan 4: peningkatan menjadi MVP dengan integrasi Midtrans sebagai sistem pembayaran
-
----
-
-## Minggu 1 dan 2 – Prototipe LMS
-
-### Bab 1: Pengenalan dan Persiapan Lingkungan
-
-**1.1 Pendahuluan Aplikasi LMS**
-
-* Penjelasan singkat tentang LMS dan manfaatnya
-* Gambaran fitur yang akan dibangun
-* Penjelasan struktur umum: course, topic, materi, kuis
-* Tujuan pengembangan prototipe
-
-**1.2 Instalasi Laravel dan Konfigurasi Dasar**
-
-* Instalasi PHP, Composer, dan Laravel
-* Pembuatan proyek Laravel
-* Penyesuaian `.env` dan struktur dasar proyek
-
-**1.3 Database SQLite**
-
-* Kelebihan SQLite untuk prototipe
-* Pembuatan dan konfigurasi file SQLite
-* Tes koneksi database
-
-**1.4 Tailwind CSS via CDN**
-
-* Menambahkan Tailwind CDN ke layout utama
-* Dasar penggunaan kelas Tailwind
-
-**1.5 Konfigurasi Apache2 (Opsional)**
-
-* Pengaturan virtual host
-* Konfigurasi agar Laravel dapat diakses via browser lokal
+* **Framework**: Laravel 12
+* **Bahasa**: PHP 8.3
+* **Frontend**: Tailwind CSS & Alpine.js (via CDN)
+* **Database**: MySQL / SQLite
+* **Autentikasi**: Laravel Breeze (konsep multi-guard)
 
 ---
 
-### Bab 2: Perancangan Struktur Database dan Migrasi
+## Instalasi & Setup
 
-**2.1 Rancangan ERD dan Skema Modular**
+Yuk, kita jalankan project ini di komputermu!
 
-* Penjelasan visual dan logis tentang relasi antara entitas
-* Penekanan pada penggunaan entitas `topics` sebagai pembungkus terstruktur dari video dan kuis
+1.  **Prasyarat**
+    - PHP >= 8.2
+    - Composer
+    - Node.js & NPM
+    - Database (MySQL, atau lainnya)
 
-**2.2 Tabel Pengguna Berdasarkan Peran**
+2.  **Clone Repository**
+    ```bash
+    git clone [https://github.com/NAMAPENGGUNA/NAMA-REPO.git](https://github.com/NAMAPENGGUNA/NAMA-REPO.git)
+    cd NAMA-REPO
+    ```
 
-* `sysadmins`: pengguna sistem dengan hak penuh
-* `course_admins`: pengelola konten kursus
-* `lecturers`: dosen atau mentor pembimbing
-* `students`: peserta yang mengikuti kursus
+3.  **Instalasi Dependensi**
+    ```bash
+    composer install
+    npm install
+    ```
 
-**2.3 Tabel Kursus dan Struktur Materi**
+4.  **Konfigurasi Environment**
+    - Salin file `.env.example` menjadi `.env`.
+      ```bash
+      cp .env.example .env
+      ```
+    - Buat *application key* baru.
+      ```bash
+      php artisan key:generate
+      ```
+    - Atur koneksi database kamu di file `.env`.
+      ```
+      DB_CONNECTION=mysql
+      DB_HOST=127.0.0.1
+      DB_PORT=3306
+      DB_DATABASE=laravel_lms
+      DB_USERNAME=root
+      DB_PASSWORD=
+      ```
 
-* `courses`: data utama kursus
-* `topics`: daftar topik dalam satu kursus, disusun secara berurutan
-* `videos`: materi video pembelajaran dalam topik
-* `quizzes`: kuis yang terkait dengan topik
-* `quiz_questions`: pertanyaan kuis
-* `quiz_options`: opsi jawaban dari masing-masing pertanyaan
+5.  **Migrasi & Seeding Database**
+    Jalankan perintah ini untuk membuat semua tabel dan mengisinya dengan data *dummy* (contoh pengguna, kursus, materi, dll).
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+    *Catatan: Perintah ini akan menghapus semua data lama di database.*
 
-**2.4 Tabel Hubungan dan Progres Belajar**
+6.  **Build Aset Frontend**
+    ```bash
+    npm run dev
+    ```
 
-* `enrollments`: siswa yang mendaftar ke kursus
-* `student_topic_progress`: status penyelesaian materi pada setiap topik
-* `quiz_attempts`: riwayat percobaan kuis oleh siswa
-* `course_lecturer`: pivot table untuk menghubungkan dosen dan kursus
-
-**2.5 Pembuatan dan Eksekusi Migrasi**
-
-* Menulis file migrasi untuk semua tabel
-* Menjalankan `php artisan migrate` untuk membentuk struktur database
-
----
-
-### Bab 3: Sistem Otentikasi dan Otorisasi Pengguna
-
-**3.1 Guard Otentikasi Peran Terpisah**
-
-* Konfigurasi multiple guard untuk setiap peran pengguna
-* Penyesuaian file `auth.php`
-
-**3.2 Form Login dan Logout Peran**
-
-* Form login untuk masing-masing peran
-* Sistem logout dan validasi akses
-
-**3.3 Middleware Akses Berdasarkan Peran**
-
-* Membuat middleware custom
-* Implementasi pada route group Laravel
-
-**3.4 Dashboard Peran Berbeda**
-
-* Template layout umum
-* Dashboard berbeda untuk sysadmin, course admin, lecturer, dan student
-
----
-
-### Bab 4: Modul Sysadmin
-
-**4.1 Manajemen Pengguna**
-
-* CRUD untuk course admin, lecturer, dan student
-* Validasi input dan hashing password
-
-**4.2 Konfigurasi Sistem Sederhana**
-
-* Pengaturan nama situs, logo, dan pengaturan global sederhana
+7.  **Jalankan Server Development**
+    ```bash
+    php artisan serve
+    ```
+    Selesai! Aplikasi sekarang berjalan di `http://127.0.0.1:8000`.
 
 ---
 
-### Bab 5: Modul Course Admin
+## Akun Demo
 
-**5.1 Pengelolaan Kursus**
+Setelah menjalankan *seeder*, kamu bisa login menggunakan akun-akun berikut. Password untuk semua akun adalah: `password`
 
-* Membuat, mengedit, dan menghapus kursus
-* Menghubungkan kursus ke course admin yang membuatnya
-
-**5.2 Manajemen Topik Kursus**
-
-* Menambah dan mengurutkan topik secara manual
-* Sistem urutan topik yang menentukan alur pembelajaran
-
-**5.3 Manajemen Konten dalam Topik**
-
-* Penambahan video ke dalam topik
-* Penambahan kuis ke dalam topik beserta pertanyaan dan jawaban
-
-**5.4 Penugasan Dosen ke Kursus**
-
-* Memilih dosen untuk setiap kursus dari daftar lecturer
+| Peran | URL Login | Email |
+| --- | --- | --- |
+| **Super Admin** | `/sysadmin/login` | `superadmin@example.com` |
+| **Course Admin**| `/course-admin/login` | `course.admin@example.com` |
+| **Lecturer** | `/lecturer/login` | `dosen1@example.com` |
+| **Student** | `/student/login` | `siswauji@example.com` |
 
 ---
 
-### Bab 6: Modul Lecturer
+## Berkontribusi
 
-**6.1 Daftar Kursus yang Diampu**
-
-* Tampilan daftar kursus yang ditugaskan
-
-**6.2 Akses Konten Kursus**
-
-* Tampilan konten video dan kuis dalam mode read-only
-
-**6.3 Pantauan Progres Siswa**
-
-* Menampilkan daftar siswa terdaftar
-* Melihat progres penyelesaian topik dan hasil kuis
+Merasa ada yang bisa ditingkatkan? Kontribusi sangat diterima! Silakan:
+1.  Fork project ini.
+2.  Buat branch baru (`git checkout -b fitur/NamaFitur`).
+3.  Commit perubahanmu (`git commit -m 'Menambahkan fitur X'`).
+4.  Push ke branch-mu (`git push origin fitur/NamaFitur`).
+5.  Buat Pull Request baru.
 
 ---
 
-### Bab 7: Modul Student
+## Lisensi
 
-**7.1 Daftar Kursus dan Pendaftaran**
-
-* Menampilkan kursus yang tersedia
-* Proses pendaftaran ke kursus
-
-**7.2 Detail Kursus dan Topik**
-
-* Tampilan urutan topik dalam kursus
-* Indikator progres per topik
-
-**7.3 Interaksi Materi**
-
-* Pemutar video menggunakan YouTube embed
-* Sistem tanda selesai untuk video
-* Akses topik berikutnya setelah topik sebelumnya selesai
-
-**7.4 Pengerjaan Kuis**
-
-* Tampilan kuis dan opsi jawaban
-* Validasi dan penilaian otomatis
-* Penyimpanan skor dan status kelulusan
-* Izin mencoba ulang jika tidak lulus
-
----
-
-### Bab 8: Fitur Tambahan
-
-**8.1 Notifikasi Ringan**
-
-* Notifikasi berbasis session atau toast sederhana untuk event penting
-
-**8.2 Pencarian dan Paginasi**
-
-* Implementasi fitur pencarian dan paginasi untuk data besar
-
-**8.3 Validasi dan Penanganan Error**
-
-* Validasi input pengguna
-* Menampilkan pesan error yang ramah
-
-**8.4 Keamanan Dasar**
-
-* Perlindungan terhadap XSS dan CSRF
-
----
-
-### Bab 9: Deployment ke Server Apache2
-
-**9.1 Persiapan Server**
-
-* Instalasi Apache2 dan konfigurasi modul dasar
-
-**9.2 Proses Deployment**
-
-* Upload kode
-* Instalasi dependency
-* Menjalankan migrasi
-
-**9.3 Konfigurasi Virtual Host**
-
-* Menyesuaikan domain atau subdomain untuk aplikasi
-* Keamanan direktori Laravel
-
----
-
-## Minggu 3 dan 4 – Pengembangan MVP dengan Midtrans
-
-Bagian ini akan ditulis setelah fase prototipe selesai. Fokus utama meliputi:
-
-* Pembuatan sistem pembayaran dengan Midtrans (Snap atau API)
-* Penerapan status akses course berdasarkan pembayaran
-* Validasi otomatis pembayaran dan enrollment
-
----
+Project ini dilisensikan di bawah [MIT License](LICENSE).
