@@ -4,7 +4,7 @@
 ![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 
-Selamat datang di Laravel LMS! Project ini adalah sebuah platform Learning Management System (LMS) open-source yang dibangun dengan Laravel 12. Awalnya dirancang dengan fitur pembayaran, kini project ini telah dirombak total menjadi **100% gratis** dan ditujukan untuk menjadi solusi e-learning internal bagi organisasi, perusahaan, atau komunitas yang ingin mengelola materi pelatihan mereka sendiri.
+Selamat datang di Laravel LMS! Project ini adalah sebuah platform Learning Management System (LMS) open-source yang dibangun dengan Laravel 12. Ditujukan untuk menjadi solusi e-learning internal bagi organisasi, perusahaan, atau komunitas yang ingin mengelola materi pelatihan mereka sendiri.
 
 Project ini sangat cocok sebagai starter-kit atau bahan belajar bagi developer yang ingin memahami cara kerja aplikasi LMS yang modular dengan sistem multi-autentikasi di Laravel.
 
@@ -40,24 +40,21 @@ Peserta yang mengikuti dan menyelesaikan kursus.
 
 ---
 
-## Tumpukan Teknologi
+## Teknologi
 
 * **Framework**: Laravel 12
 * **Bahasa**: PHP 8.3
 * **Frontend**: Tailwind CSS & Alpine.js (via CDN)
 * **Database**: MySQL / SQLite
-* **Autentikasi**: Laravel Breeze (konsep multi-guard)
+* **Autentikasi**: Manual dengan middleware
 
 ---
 
 ## Instalasi & Setup
 
-Yuk, kita jalankan project ini di komputermu!
-
 1.  **Prasyarat**
     - PHP >= 8.2
     - Composer
-    - Node.js & NPM
     - Database (MySQL, atau lainnya)
 
 2.  **Clone Repository**
@@ -69,7 +66,6 @@ Yuk, kita jalankan project ini di komputermu!
 3.  **Instalasi Dependensi**
     ```bash
     composer install
-    npm install
     ```
 
 4.  **Konfigurasi Environment**
@@ -98,12 +94,7 @@ Yuk, kita jalankan project ini di komputermu!
     ```
     *Catatan: Perintah ini akan menghapus semua data lama di database.*
 
-6.  **Build Aset Frontend**
-    ```bash
-    npm run dev
-    ```
-
-7.  **Jalankan Server Development**
+6.  **Jalankan Server Development**
     ```bash
     php artisan serve
     ```
