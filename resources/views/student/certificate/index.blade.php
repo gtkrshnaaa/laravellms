@@ -24,7 +24,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($certificates as $certificate)
             <div class="bg-white rounded-lg border-2 border-gray-100 overflow-hidden group flex flex-col">
-                <img src="{{ $certificate->course->thumbnail ? Storage::url($certificate->course->thumbnail) : 'https://placehold.co/600x400/DEDEDE/303030?text=Course' }}" alt="{{ $certificate->course->name }}" class="w-full h-48 object-cover">
+                <img src="{{ $certificate->course->thumbnail ? Storage::url($certificate->course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $certificate->course->name }}" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h2 class="text-xl font-bold text-gray-800 truncate">{{ $certificate->course->name }}</h2>
                     <p class="text-sm text-gray-500 mt-2">

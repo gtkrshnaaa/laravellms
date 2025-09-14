@@ -40,7 +40,7 @@
         @forelse($latestCourses as $course)
             <div class="bg-white p-4 rounded-lg border-2 border-gray-100 mb-4 flex items-center justify-between">
                 <div class="flex items-center">
-                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/150x100/FEE2E2/DC2626?text=Course' }}" alt="{{ $course->name }}" class="w-24 h-16 object-cover rounded-md border border-gray-100">
+                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/150x100/3B82F6/FFFFFF?text=Course' }}" alt="{{ $course->name }}" class="w-24 h-16 object-cover rounded-md border border-gray-100">
                     <div class="ml-4">
                         <h3 class="font-bold text-lg text-gray-800">{{ $course->name }}</h3>
                         <p class="text-sm text-gray-500">{{ $course->students_count }} Siswa</p>

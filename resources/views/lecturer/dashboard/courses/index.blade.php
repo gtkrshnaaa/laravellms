@@ -8,7 +8,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($courses as $course)
             <div class="bg-white rounded-lg border-2 border-gray-100 overflow-hidden group">
-                <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/DEDEDE/303030?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover">
+                <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h2 class="text-xl font-bold text-gray-800 truncate">{{ $course->name }}</h2>
                     <p class="text-gray-500 text-sm mt-2">

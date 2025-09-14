@@ -59,7 +59,7 @@
     <div class="lg:col-span-1">
         <div class="sticky top-24">
             <div class="bg-white rounded-lg border-2 border-gray-100 overflow-hidden">
-                <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/BDBDBD/303030?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover">
+                <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover">
                 <div class="p-6">
                     @if($isEnrolled)
                         {{-- 1. Jika sudah terdaftar --}}

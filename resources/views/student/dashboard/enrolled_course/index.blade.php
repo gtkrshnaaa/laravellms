@@ -19,7 +19,7 @@
             @endphp
             <div class="bg-white rounded-lg border-2 border-gray-100 overflow-hidden group flex flex-col">
                 <a href="{{ route('student.enrolled_course.show', $course) }}">
-                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/DEDEDE/303030?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity">
+                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity">
                 </a>
                 <div class="p-6 flex flex-col flex-grow">
                     <a href="{{ route('student.enrolled_course.show', $course) }}">

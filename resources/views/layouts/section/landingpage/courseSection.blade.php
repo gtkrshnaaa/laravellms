@@ -4,36 +4,36 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Judul dan Deskripsi Section --}}
         <div class="max-w-3xl mb-8">
-            <h2 class="text-3xl font-bold text-gray-900">
+            <h2 class="text-3xl font-bold text-black">
                 Gerbang Anda Menuju Karir Profesional
             </h2>
-            <p class="mt-2 text-gray-600">
+            <p class="mt-2 text-black">
                 Dari layanan kabin premium hingga manajemen perhotelan bintang lima, Laravel mendukung pengembangan karir profesional Anda.
             </p>
         </div>
 
         {{-- Tampilkan notifikasi jika ada pencarian --}}
         @isset($searchTerm)
-        <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mb-6 rounded-md" role="alert">
+        <div class="bg-blue-50 border-l-4 border-blue-500 text-black p-4 mb-6 rounded-md" role="alert">
             <p>Menampilkan hasil pencarian untuk: <span class="font-bold">"{{ $searchTerm }}"</span>. <a href="{{ route('landingpage') }}" class="font-bold underline">Lihat semua kursus</a>.</p>
         </div>
         @endisset
 
         {{-- Bagian Tab Kategori Utama (Dinamis) --}}
         @if($categories->isNotEmpty())
-            <div class="border-b border-gray-200">
+            <div class="border-b border-blue-100">
                 <nav class="-mb-px flex space-x-4 sm:space-x-8 overflow-x-auto" aria-label="Tabs">
                     {{-- PERUBAHAN DI SINI: Tambahkan Tombol "Semua Kategori" --}}
                     <a href="{{ route('landingpage') }}"
                         class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm
-                               {{ !$selectedCategory ? 'border-gray-600 text-gray-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
+                               {{ !$selectedCategory ? 'border-blue-600 text-blue-600' : 'border-transparent text-black hover:text-blue-600 hover:border-blue-300' }}">
                         Semua Kategori
                     </a>
 
                     @foreach ($categories as $category)
                         <a href="{{ route('landingpage', ['category' => $category->slug]) }}"
                             class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm
-                                   {{ ($selectedCategory && $selectedCategory->id == $category->id) ? 'border-gray-600 text-gray-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
+                                   {{ ($selectedCategory && $selectedCategory->id == $category->id) ? 'border-blue-600 text-blue-600' : 'border-transparent text-black hover:text-blue-600 hover:border-blue-300' }}">
                             {{ $category->name }}
                         </a>
                     @endforeach
@@ -46,7 +46,7 @@
                     @foreach ($selectedCategory->subCategories as $subCategory)
                         <a href="{{ route('landingpage', ['category' => $selectedCategory->slug, 'subcategory' => $subCategory->slug]) }}"
                             class="px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap
-                                   {{ ($selectedSubCategory && $selectedSubCategory->id == $subCategory->id) ? 'bg-gray-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                                   {{ ($selectedSubCategory && $selectedSubCategory->id == $subCategory->id) ? 'bg-blue-600 text-white' : 'bg-white text-black border border-blue-100 hover:bg-blue-50' }}">
                             {{ $subCategory->name }}
                         </a>
                     @endforeach
@@ -59,24 +59,24 @@
             @forelse ($courses as $course)
                 <div class="group">
                     <a href="{{ route('course.show.public', $course) }}" class="block">
-                        <div class="border-2 border-gray-200 group-hover:border-gray-600 transition">
-                             <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/BDBDBD/303030?text=Course' }}" alt="{{ $course->name }}" class="w-full h-32 sm:h-40 object-cover">
-                        </div>
-                    </a>
+                        <div class="border border-blue-100 group-hover:border-blue-600 transition">
+                             <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $course->name }}" class="w-full h-32 sm:h-40 object-cover">
+                         </div>
+                     </a>
                     <div class="pt-2">
-                        <h3 class="text-sm sm:text-md font-bold text-gray-900 truncate-2-lines">
-                            <a href="{{ route('course.show.public', $course) }}" class="hover:text-gray-600">{{ $course->name }}</a>
+                        <h3 class="text-sm sm:text-md font-bold text-black truncate-2-lines">
+                            <a href="{{ route('course.show.public', $course) }}" class="hover:text-blue-600">{{ $course->name }}</a>
                         </h3>
-                        <p class="text-xs text-gray-500 mt-1 truncate">Oleh {{ $course->courseAdmin->name }}</p>
+                        <p class="text-xs text-black mt-1 truncate">Oleh {{ $course->courseAdmin->name }}</p>
                         
                         @if($course->subCategory)
-                            <p class="text-xs font-semibold bg-gray-100 inline-block px-2 rounded-md text-gray-500 mt-2">{{ $course->subCategory->name }}</p>
+                            <p class="text-xs font-semibold bg-white inline-block px-2 rounded-md text-black border border-blue-100 mt-2">{{ $course->subCategory->name }}</p>
                         @endif
                     </div>
                 </div>
             @empty
                 <div class="col-span-full text-center py-12">
-                    <p class="text-gray-500">Saat ini belum ada kursus yang tersedia untuk kategori ini.</p>
+                    <p class="text-black">Saat ini belum ada kursus yang tersedia untuk kategori ini.</p>
                 </div>
             @endforelse
         </div>

@@ -56,7 +56,7 @@
         @forelse($inProgressCourses as $course)
             <div class="bg-white p-6 rounded-lg border-2 border-gray-100 mb-4">
                 <div class="flex items-center">
-                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/150x100/FEE2E2/DC2626?text=Course' }}" alt="Thumbnail Kursus" class="w-32 h-20 object-cover rounded-md border border-gray-100">
+                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/150x100/3B82F6/FFFFFF?text=Course' }}" alt="Thumbnail Kursus" class="w-32 h-20 object-cover rounded-md border border-gray-100">
                     <div class="ml-4 flex-1">
                         <h3 class="font-bold text-lg text-gray-800">{{ $course->name }}</h3>
                         {{-- Tidak perlu lagi Topik: In-Flight Safety Procedure, langsung progres total --}}
@@ -83,7 +83,7 @@
         @forelse($completedCoursesList as $course)
             <div class="bg-white p-6 rounded-lg border-2 border-gray-100 mb-4">
                 <div class="flex items-center">
-                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/150x100/FEE2E2/DC2626?text=Course' }}" alt="Thumbnail Kursus" class="w-32 h-20 object-cover rounded-md border border-gray-100">
+                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/150x100/3B82F6/FFFFFF?text=Course' }}" alt="Thumbnail Kursus" class="w-32 h-20 object-cover rounded-md border border-gray-100">
                     <div class="ml-4 flex-1">
                         <h3 class="font-bold text-lg text-gray-800">{{ $course->name }}</h3>
                         <p class="text-sm text-gray-500">Progres: 100% Selesai!</p>

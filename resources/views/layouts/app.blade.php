@@ -16,11 +16,11 @@
 <body class="bg-white">
     <div class="min-h-screen flex flex-col">
         {{-- Navbar Publik Baru --}}
-        <header class="bg-white border-b-2 border-gray-100 sticky top-0 z-50">
+        <header class="bg-white border-b border-blue-100 sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
-                        <a href="{{ route('landingpage') }}" class="text-2xl font-bold text-gray-600">LMS Laravel</a>
+                        <a href="{{ route('landingpage') }}" class="text-2xl font-bold text-black">LMS Laravel</a>
                         <div class="hidden md:block ml-10">
                             {{-- Nanti bisa jadi dropdown kategori --}}
                             {{-- <a href="#" class="text-gray-700 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Kategori</a> --}}
@@ -29,27 +29,27 @@
                     <div class="hidden md:block flex-1 max-w-lg mx-4">
                         <form action="{{ route('landingpage') }}" method="GET" class="relative">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <i class="uil uil-search text-gray-400"></i>
+                                <i class="uil uil-search text-blue-400"></i>
                             </span>
-                            <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari kursus apa saja..." class="w-full pl-10 pr-4 py-2 border-2 border-gray-200 rounded-full bg-gray-50 focus:bg-white focus:border-gray-500 focus:outline-none transition">
+                            <input type="search" name="search" value="{{ request('search') }}" placeholder="Cari kursus apa saja..." class="w-full pl-10 pr-4 py-2 border border-blue-100 rounded-full bg-white focus:bg-white focus:border-blue-500 focus:outline-none transition">
                         </form>
                     </div>
                     <div class="hidden md:flex items-center space-x-2">
                         @guest('student')
-                            <a href="{{ route('student.login') }}" class="px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 border-2 border-gray-200">
+                            <a href="{{ route('student.login') }}" class="px-4 py-2 rounded-md text-sm font-medium text-black hover:bg-blue-50 border border-blue-100">
                                 Masuk
                             </a>
-                            <a href="{{ route('student.register') }}" class="px-4 py-2 rounded-md text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 border-2 border-gray-600">
+                            <a href="{{ route('student.register') }}" class="px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 border border-blue-600">
                                 Daftar
                             </a>
                         @endguest
                         @auth('student')
-                            <a href="{{ route('student.dashboard') }}" class="px-4 py-2 rounded-md text-sm font-medium text-white bg-gray-600 hover:bg-gray-700">
+                            <a href="{{ route('student.dashboard') }}" class="px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
                                 Dashboard Saya
                             </a>
                             <form action="{{ route('student.logout') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="px-4 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Logout</button>
+                                <button type="submit" class="px-4 py-2 rounded-md text-sm font-medium text-black hover:bg-blue-50">Logout</button>
                             </form>
                         @endauth
                     </div>
@@ -58,17 +58,17 @@
         </header>
 
         {{-- Konten Halaman --}}
-        <main class="flex-grow bg-gray-50">
+        <main class="flex-grow bg-white">
             @yield('content')
         </main>
 
-        <footer class="bg-gray-800 text-white">
+        <footer class="bg-white text-black">
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {{-- Kolom 1: Tentang Laravel --}}
                     <div class="md:col-span-2">
-                        <h3 class="text-2xl font-bold text-gray-500">LMS Laravel</h3>
-                        <p class="mt-4 text-gray-400 text-sm leading-relaxed">
+                        <h3 class="text-2xl font-bold text-black">LMS Laravel</h3>
+                        <p class="mt-4 text-black text-sm leading-relaxed">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi nulla perspiciatis eveniet illo reiciendis perferendis earum quidem, dolorem minus unde!
                         </p>
                     </div>
@@ -77,10 +77,10 @@
                     <div>
                         <h4 class="text-lg font-semibold tracking-wider uppercase">Tautan</h4>
                         <ul class="mt-4 space-y-2 text-sm">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Tentang Kami</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Program Pelatihan</a></li>
-                            <li><a href="{{ route('landingpage') }}" class="text-gray-400 hover:text-white transition">Katalog Kursus</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition">Kontak</a></li>
+                            <li><a href="#" class="text-black hover:text-blue-600 transition">Tentang Kami</a></li>
+                            <li><a href="#" class="text-black hover:text-blue-600 transition">Program Pelatihan</a></li>
+                            <li><a href="{{ route('landingpage') }}" class="text-black hover:text-blue-600 transition">Katalog Kursus</a></li>
+                            <li><a href="#" class="text-black hover:text-blue-600 transition">Kontak</a></li>
                         </ul>
                     </div>
 
@@ -90,28 +90,28 @@
                         <ul class="mt-4 space-y-3 text-sm">
                             <li class="flex items-start">
                                 <i class="uil uil-map-marker mt-1 mr-3"></i>
-                                <span class="text-gray-400">Jl. Jalan-jalan kemana aja, Kesana Kemari, Indonesia, Bumi</span>
+                                <span class="text-black">Jl. Jalan-jalan kemana aja, Kesana Kemari, Indonesia, Bumi</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="uil uil-envelope-alt mt-1 mr-3"></i>
-                                <span class="text-gray-400">info@Laravel.co.id</span>
+                                <span class="text-black">info@Laravel.co.id</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="uil uil-phone-alt mt-1 mr-3"></i>
-                                <span class="text-gray-400">1484 1561 1561 445</span>
+                                <span class="text-black">1484 1561 1561 445</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 {{-- Bagian Bawah Footer --}}
-                <div class="mt-8 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-sm text-gray-400">&copy; {{ date('Y') }} Laravel. All rights reserved.</p>
+                <div class="mt-8 pt-8 border-t border-blue-100 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-sm text-black">&copy; {{ date('Y') }} Laravel. All rights reserved.</p>
                     <div class="flex space-x-4 mt-4 md:mt-0">
                         {{-- Ganti '#' dengan link sosial media yang benar --}}
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="uil uil-facebook-f text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="uil uil-instagram text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="uil uil-youtube text-xl"></i></a>
+                        <a href="#" class="text-black hover:text-blue-600 transition"><i class="uil uil-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-black hover:text-blue-600 transition"><i class="uil uil-instagram text-xl"></i></a>
+                        <a href="#" class="text-black hover:text-blue-600 transition"><i class="uil uil-youtube text-xl"></i></a>
                     </div>
                 </div>
             </div>
@@ -120,3 +120,4 @@
     @stack('scripts')
 </body>
 </html>
+

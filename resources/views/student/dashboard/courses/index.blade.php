@@ -70,7 +70,7 @@
                 @endif
 
                 <a href="{{ route('student.courses.show', $course) }}" class="block">
-                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/BDBDBD/303030?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity">
+                    <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $course->name }}" class="w-full h-48 object-cover group-hover:opacity-80 transition-opacity">
                 </a>
                 <div class="p-6">
                     <h2 class="text-xl font-bold text-gray-800 truncate">{{ $course->name }}</h2>
