@@ -57,12 +57,12 @@
         }
     </style>
 </head>
-<body class="bg-gray-200 flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+<body class="bg-white flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
 
     {{-- [START PERUBAHAN] Tampilkan tombol hanya untuk siswa yang login --}}
     @auth('student')
     <div class="print-button-container mb-4 text-center max-w-lg">
-        <button onclick="window.print()" class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition shadow-md">
+        <button onclick="window.print()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition shadow-md">
             <i class="uil uil-print mr-2"></i>Cetak / Simpan sebagai PDF
         </button>
         <p class="text-xs text-gray-500 mt-2">Pastikan "Destination" adalah "Save as PDF", Layout "Landscape", dan centang "Background graphics" untuk hasil terbaik.</p>
@@ -81,20 +81,20 @@
 
 
     {{-- Konten Sertifikat --}}
-    <div class="certificate-container aspect-[297/210] w-full max-w-[1123px] bg-white shadow-2xl flex flex-col relative overflow-hidden border-4 border-gray-200 p-12">
-        <div class="batik-motif absolute -top-20 -left-20 w-80 h-80 rounded-full opacity-50"></div>
-        <div class="batik-motif absolute -bottom-20 -right-20 w-80 h-80 rounded-full opacity-50"></div>
+    <div class="certificate-container aspect-[297/210] w-full max-w-[1123px] bg-white shadow-2xl flex flex-col relative overflow-hidden border-4 border-blue-100 p-12">
+        <div class="batik-motif absolute -top-20 -left-20 w-80 h-80 rounded-full opacity-40"></div>
+        <div class="batik-motif absolute -bottom-20 -right-20 w-80 h-80 rounded-full opacity-40"></div>
         
         <div class="w-full text-center z-10">
-            <i class="uil uil-award text-5xl md:text-6xl text-gray-600"></i>
-            <h1 class="text-4xl md:text-5xl font-bold font-serif text-gray-800 mt-2 tracking-wide">SERTIFIKAT KELULUSAN</h1>
-            <p class="text-base md:text-lg text-gray-500 mt-2">Nomor: LARAVEL/{{ $completionDate->format('Y') }}/{{ strtoupper(substr($course->id, 0, 4)) }}/{{ strtoupper(substr($certificate->id, 0, 4)) }}</p>
+            <i class="uil uil-award text-5xl md:text-6xl text-blue-600"></i>
+            <h1 class="text-4xl md:text-5xl font-bold font-serif text-black mt-2 tracking-wide">SERTIFIKAT KELULUSAN</h1>
+            <p class="text-base md:text-lg text-gray-600 mt-2">Nomor: LARAVEL/{{ $completionDate->format('Y') }}/{{ strtoupper(substr($course->id, 0, 4)) }}/{{ strtoupper(substr($certificate->id, 0, 4)) }}</p>
         </div>
         
         <div class="flex-grow flex flex-col items-center justify-center text-center z-10">
             <p class="text-xl md:text-2xl text-gray-600 mt-4">diberikan kepada:</p>
             
-            <p class="student-name text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-gray-700 my-6 border-b-2 border-gray-300 pb-2 px-8">
+            <p class="student-name text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-black my-6 border-b-2 border-blue-200 pb-2 px-8">
                 {{ $student->name }}
             </p>
 
@@ -102,7 +102,7 @@
                 Atas partisipasi aktif dan keberhasilannya dalam menyelesaikan seluruh rangkaian materi kursus online:
             </p>
 
-            <p class="course-name text-2xl md:text-3xl font-semibold font-serif text-gray-800 mt-4">
+            <p class="course-name text-2xl md:text-3xl font-semibold font-serif text-black mt-4">
                 "{{ $course->name }}"
             </p>
         </div>
@@ -110,12 +110,12 @@
         <div class="w-full flex justify-between items-end z-10">
             <div class="text-left">
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data={{ route('certificate.verify.public', $certificate->verification_token) }}" alt="QR Code Verifikasi">
-                <p class="text-xs text-gray-400 mt-1">Scan untuk Verifikasi</p>
+                <p class="text-xs text-gray-500 mt-1">Scan untuk Verifikasi</p>
             </div>
             <div class="text-center">
                 <p>Yogyakarta, {{ $completionDate->translatedFormat('d F Y') }}</p>
-                <p class="signature font-signature text-5xl md:text-6xl text-gray-800 my-2">Laravel</p>
-                <p class="font-bold border-t-2 border-gray-400 pt-2">Manajemen Laravel</p>
+                <p class="signature font-signature text-5xl md:text-6xl text-black my-2">Laravel</p>
+                <p class="font-bold border-t-2 border-blue-200 pt-2">Manajemen Laravel</p>
             </div>
         </div>
     </div>

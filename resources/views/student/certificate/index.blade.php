@@ -3,10 +3,10 @@
 @section('title', 'Sertifikat Saya')
 
 @section('content')
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Sertifikat Saya</h1>
+    <h1 class="text-3xl font-bold text-black mb-6">Sertifikat Saya</h1>
 
     {{-- [START] Blok Informasi --}}
-    <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-lg mb-6" role="alert">
+    <div class="bg-blue-50 border-l-4 border-blue-500 text-black p-4 rounded-lg mb-6" role="alert">
         <div class="flex">
             <div class="py-1"><i class="uil uil-info-circle text-2xl text-blue-500 mr-3"></i></div>
             <div>
@@ -23,11 +23,11 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($certificates as $certificate)
-            <div class="bg-white rounded-lg border-2 border-gray-100 overflow-hidden group flex flex-col">
+            <div class="bg-white rounded-lg border border-blue-100 overflow-hidden group flex flex-col">
                 <img src="{{ $certificate->course->thumbnail ? Storage::url($certificate->course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $certificate->course->name }}" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h2 class="text-xl font-bold text-gray-800 truncate">{{ $certificate->course->name }}</h2>
-                    <p class="text-sm text-gray-500 mt-2">
+                    <h2 class="text-xl font-bold text-black truncate">{{ $certificate->course->name }}</h2>
+                    <p class="text-sm text-gray-600 mt-2">
                         <i class="uil uil-calendar-alt"></i>
                         Diperoleh pada: {{ $certificate->completed_at->translatedFormat('d F Y') }}
                     </p>
@@ -39,9 +39,9 @@
                 </div>
             </div>
         @empty
-            <div class="col-span-full bg-white p-8 rounded-lg border-2 border-gray-100 text-center">
-                <p class="text-gray-500">Anda belum memiliki sertifikat. Selesaikan kursus untuk mendapatkannya!</p>
-                <a href="{{ route('student.enrolled_course.index') }}" class="mt-4 inline-block px-6 py-2 rounded-lg bg-gray-100 text-gray-800 font-bold hover:bg-gray-200 transition-colors">
+            <div class="col-span-full bg-white p-8 rounded-lg border border-blue-100 text-center">
+                <p class="text-black">Anda belum memiliki sertifikat. Selesaikan kursus untuk mendapatkannya!</p>
+                <a href="{{ route('student.enrolled_course.index') }}" class="mt-4 inline-block px-6 py-2 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-700 transition-colors">
                     Lihat Kursus Saya
                 </a>
             </div>
