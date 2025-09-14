@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-50"> {{-- Warna background sangat soft, gray-50 --}}
+<html lang="en" class="h-full bg-white">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,15 +35,15 @@
 </head>
 <body class="h-full flex flex-col min-h-screen">
     {{-- Navbar --}}
-    <nav class="bg-white text-dark-text p-4 flex justify-between items-center border-b border-gray-100 shadow-sm sticky top-0 z-50">
+    <nav class="bg-white text-black p-4 flex justify-between items-center border-b border-blue-100 shadow-sm sticky top-0 z-50">
         <div class="text-xl font-bold flex items-center">
             {{-- Unicons Home --}}
-            <i class="uil uil-estate text-gray-600 w-6 h-6 mr-2 flex items-center justify-center text-2xl"></i>
+            <i class="uil uil-estate text-blue-600 w-6 h-6 mr-2 flex items-center justify-center text-2xl"></i>
             Course Admin Panel
         </div>
         <form action="{{ route('course_admin.logout') }}" method="POST">
             @csrf
-            <button type="submit" class="bg-gray-600 hover:bg-gray-800 px-4 py-2 rounded-md text-sm text-white font-semibold transition duration-300 ease-in-out">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-sm text-white font-semibold transition duration-300 ease-in-out">
                 Logout
             </button>
         </form>
@@ -51,12 +51,12 @@
 
     <div class="flex flex-1">
         {{-- Sidebar --}}
-        <aside class="w-64 bg-white border-r border-gray-100 p-4 sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-y-auto shadow-sm flex flex-col justify-between"> {{-- Added flex-col and justify-between --}}
+        <aside class="w-64 bg-white border-r border-blue-100 p-4 sticky top-[4.5rem] h-[calc(100vh-4.5rem)] overflow-y-auto shadow-sm flex flex-col justify-between"> {{-- Added flex-col and justify-between --}}
             <ul class="space-y-2">
                 <li>
                     <a href="{{ route('course_admin.dashboard') }}"
-                        class="block px-4 py-2 rounded-lg hover:bg-light-red hover:text-gray-600 transition duration-200 flex items-center
-                        @if(request()->routeIs('course_admin.dashboard')) bg-light-red text-gray-600 font-semibold @else text-dark-text @endif">
+                        class="block px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-black transition duration-200 flex items-center
+                        @if(request()->routeIs('course_admin.dashboard')) bg-blue-50 text-black font-semibold @else text-black @endif">
                         {{-- Unicons Home --}}
                         <i class="uil uil-estate w-5 h-5 mr-2 flex items-center justify-center text-lg"></i>
                         Dashboard
@@ -64,8 +64,8 @@
                 </li>
                 <li>
                     <a href="{{ route('course_admin.management.courses.index') }}"
-                        class="block px-4 py-2 rounded-lg hover:bg-light-red hover:text-gray-600 transition duration-200 flex items-center
-                        @if(request()->routeIs('course_admin.management.*')) bg-light-red text-gray-600 font-semibold @else text-dark-text @endif">
+                        class="block px-4 py-2 rounded-lg hover:bg-blue-50 hover:text-black transition duration-200 flex items-center
+                        @if(request()->routeIs('course_admin.management.*')) bg-blue-50 text-black font-semibold @else text-black @endif">
                         {{-- Unicons Book --}}
                         <i class="uil uil-book-open w-5 h-5 mr-2 flex items-center justify-center text-lg"></i>
                         Manajemen Kursus
@@ -75,11 +75,11 @@
 
             {{-- Red box at the bottom of the sidebar --}}
             <div class="mt-auto"> {{-- mt-auto pushes it to the bottom --}}
-                <div class="bg-gray-600 rounded-lg p-4 text-center shadow-md">
-                    <p class="text-white text-sm font-semibold mb-3">
+                <div class="bg-white border border-blue-100 rounded-lg p-4 text-center shadow-sm">
+                    <p class="text-black text-sm font-semibold mb-3">
                         Lihat bagaimana tampilan web Anda.
                     </p>
-                    <a href="{{ url('/') }}" target="_blank" class="inline-flex items-center justify-center bg-white text-gray-600 hover:bg-gray-100 px-4 py-2 rounded-md text-sm font-semibold transition duration-300">
+                    <a href="{{ url('/') }}" target="_blank" class="inline-flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-semibold transition duration-300">
                         {{-- Unicons Eye --}}
                         <i class="uil uil-eye w-4 h-4 mr-2 flex items-center justify-center text-base"></i>
                         Lihat Halaman
@@ -89,14 +89,14 @@
         </aside>
 
         {{-- Main Content --}}
-        <main class="flex-1 p-8 bg-gray-50 overflow-y-auto">
+        <main class="flex-1 p-8 bg-white overflow-y-auto">
             @if (session('success'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-md" role="alert">
                     <p>{{ session('success') }}</p>
                 </div>
             @endif
             @if ($errors->any())
-                <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mb-6 rounded-md" role="alert">
+                <div class="bg-blue-50 border-l-4 border-blue-500 text-black p-4 mb-6 rounded-md" role="alert">
                     <p class="font-bold">Terjadi Kesalahan</p>
                     <ul class="mt-2 list-disc list-inside">
                         @foreach ($errors->all() as $error)
