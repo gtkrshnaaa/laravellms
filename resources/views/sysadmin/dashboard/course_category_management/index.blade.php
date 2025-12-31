@@ -35,7 +35,7 @@
                         <td class="px-6 py-4 text-primary font-medium">{{ $category->name }}</td>
                         <td class="px-6 py-4 text-secondary font-mono text-xs">{{ $category->slug }}</td>
                         <td class="px-6 py-4 text-center">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100/50 text-blue-800 dark:text-blue-200">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20">
                                 {{ $category->sub_categories_count }}
                             </span>
                         </td>
