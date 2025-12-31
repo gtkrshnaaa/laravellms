@@ -1,4 +1,4 @@
-@extends('layouts.student') {{-- Use Student Layout for consistent navbar --}}
+@extends('layouts.app') {{-- Use Public App Layout for consistency --}}
 @section('title', $course->name)
 
 @section('content')
