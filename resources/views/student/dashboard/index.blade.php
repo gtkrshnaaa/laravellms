@@ -14,7 +14,7 @@
         <div class="relative overflow-hidden p-6 rounded-2xl border border-border group transition-all duration-300 bg-gradient-to-br from-surface to-gray-100 dark:from-surface dark:to-gray-900 shadow-sm hover:shadow-md">
             <div class="flex justify-between items-start mb-4">
                 <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 border border-blue-500/20 shadow-sm">
-                    <i class="uil uil-book-reader text-xl"></i>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                 </div>
                  <span class="text-xs font-medium text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full border border-blue-500/20">Aktif</span>
             </div>
@@ -28,7 +28,7 @@
         <div class="relative overflow-hidden p-6 rounded-2xl border border-border group transition-all duration-300 bg-gradient-to-br from-surface to-gray-100 dark:from-surface dark:to-gray-900 shadow-sm hover:shadow-md">
             <div class="flex justify-between items-start mb-4">
                 <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600 border border-green-500/20 shadow-sm">
-                    <i class="uil uil-check-circle text-xl"></i>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                  <span class="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full border border-green-500/20">Selesai</span>
             </div>
@@ -42,7 +42,7 @@
         <div class="relative overflow-hidden p-6 rounded-2xl border border-border group transition-all duration-300 bg-gradient-to-br from-surface to-gray-100 dark:from-surface dark:to-gray-900 shadow-sm hover:shadow-md">
              <div class="flex justify-between items-start mb-4">
                 <div class="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600 border border-yellow-500/20 shadow-sm">
-                    <i class="uil uil-award text-xl"></i>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
                 </div>
                  <span class="text-xs font-medium text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded-full border border-yellow-500/20">Prestasi</span>
             </div>
