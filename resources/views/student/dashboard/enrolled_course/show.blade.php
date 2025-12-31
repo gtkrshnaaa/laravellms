@@ -43,7 +43,7 @@
                                     elseif ($previous_material instanceof \App\Models\Quiz) $prev_route = route('student.enrolled_course.quiz', [$course, $previous_material]);
                                     elseif ($previous_material instanceof \App\Models\GoogleDriveMaterial) $prev_route = route('student.enrolled_course.googledrive', [$course, $previous_material]);
                                 @endphp
-                                <a href="{{ $prev_route }}" class="px-5 py-2.5 rounded-xl bg-surface border border-border text-secondary font-medium hover:text-primary hover:border-primary transition-all">
+                                <a href="{{ $prev_route }}" class="px-5 py-2.5 rounded-xl bg-surface border border-border text-secondary font-medium hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:border-primary transition-all">
                                     <i class="uil uil-arrow-left mr-1"></i> Sebelumnya
                                 </a>
                             @else
@@ -126,7 +126,7 @@
                                     elseif ($previous_material instanceof \App\Models\Quiz) $prev_route = route('student.enrolled_course.quiz', [$course, $previous_material]);
                                     elseif ($previous_material instanceof \App\Models\GoogleDriveMaterial) $prev_route = route('student.enrolled_course.googledrive', [$course, $previous_material]);
                                 @endphp
-                                <a href="{{ $prev_route }}" class="px-5 py-2.5 rounded-xl bg-surface border border-border text-secondary font-medium hover:text-primary hover:border-primary transition-all">
+                                <a href="{{ $prev_route }}" class="px-5 py-2.5 rounded-xl bg-surface border border-border text-secondary font-medium hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:border-primary transition-all">
                                     <i class="uil uil-arrow-left mr-1"></i> Sebelumnya
                                 </a>
                             @else
@@ -205,7 +205,7 @@
                         @endphp
                         <li>
                             <a href="{{ $isLocked ? '#' : $route }}"
-                               class="flex items-center p-3 rounded-xl text-left w-full transition-all border border-transparent {{ $isLocked ? 'opacity-50 cursor-not-allowed text-secondary bg-surface/50' : ($is_active ? 'bg-primary/5 text-primary font-bold border-primary/10 shadow-sm' : 'text-secondary hover:bg-surface hover:text-primary hover:border-border') }}">
+                               class="flex items-center p-3 rounded-xl text-left w-full transition-all border border-transparent {{ $isLocked ? 'opacity-50 cursor-not-allowed text-secondary bg-gray-50 dark:bg-white/5' : ($is_active ? 'bg-primary/5 text-primary font-bold border-primary/10 shadow-sm' : 'text-secondary hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:border-border') }}">
                                 
                                 @if ($is_completed)
                                     <i class="uil uil-check-circle text-lg text-green-500 shrink-0"></i>
@@ -240,7 +240,7 @@
                     <ul class="space-y-1">
                         @foreach ($course->followUpLinks as $link)
                             <li>
-                                <a href="{{ $link->url }}" target="_blank" class="flex items-center p-3 rounded-xl text-left w-full text-sm text-secondary hover:bg-surface hover:text-primary border border-transparent hover:border-border transition-all">
+                                <a href="{{ $link->url }}" target="_blank" class="flex items-center p-3 rounded-xl text-left w-full text-sm text-secondary hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary border border-transparent hover:border-border transition-all">
                                     <i class="uil uil-external-link-alt text-lg text-blue-500 shrink-0"></i>
                                     <span class="ml-3 flex-1">{{ $link->label }}</span>
                                 </a>

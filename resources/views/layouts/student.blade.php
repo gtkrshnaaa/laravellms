@@ -57,7 +57,7 @@
     <style>
         :root {
             /* Light Mode (Expressive) */
-            --background: #ffffff; /* Pure White */
+            --background: #f9fafb; /* Gray 50 - Harmonious with White Surface */
             --surface: #ffffff;
             --border: #e4e4e7;     /* Zinc 200 */
             --primary: #18181b;    /* Zinc 900 */
@@ -96,7 +96,7 @@
             height: 100%;
             z-index: -1;
             /* Light Mode Default */
-            background-color: #ffffff;
+            background-color: #f9fafb;
             background-image: radial-gradient(#d4d4d8 1px, transparent 1px);
             background-size: 24px 24px;
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);

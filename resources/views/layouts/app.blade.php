@@ -46,7 +46,7 @@
     <style>
         :root {
             /* Light Mode (Expressive) */
-            --background: #ffffff; /* Pure White */
+            --background: #f9fafb; /* Gray 50 */
             --surface: #ffffff;
             --border: #e4e4e7;     /* Zinc 200 */
             --primary: #18181b;    /* Zinc 900 */
