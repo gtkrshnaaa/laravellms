@@ -36,11 +36,11 @@
             </div>
         </div>
 
-        <button id="prev-slide" class="absolute top-1/2 left-4 -translate-y-1/2 bg-surface/80 backdrop-blur text-primary hover:bg-surface p-3 rounded-full border border-border shadow-lg transition-all hover:scale-105">
-            <i class="uil uil-angle-left-b text-xl"></i>
+        <button id="prev-slide" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/90 backdrop-blur text-black hover:bg-white p-3 rounded-full border border-white/20 shadow-lg transition-all hover:scale-105 z-20 group">
+            <i class="uil uil-angle-left-b text-xl group-hover:-translate-x-0.5 transition-transform"></i>
         </button>
-        <button id="next-slide" class="absolute top-1/2 right-4 -translate-y-1/2 bg-surface/80 backdrop-blur text-primary hover:bg-surface p-3 rounded-full border border-border shadow-lg transition-all hover:scale-105">
-            <i class="uil uil-angle-right-b text-xl"></i>
+        <button id="next-slide" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/90 backdrop-blur text-black hover:bg-white p-3 rounded-full border border-white/20 shadow-lg transition-all hover:scale-105 z-20 group">
+            <i class="uil uil-angle-right-b text-xl group-hover:translate-x-0.5 transition-transform"></i>
         </button>
     </div>
 </div>
