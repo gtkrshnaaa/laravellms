@@ -58,7 +58,7 @@
             /* Industrial Dark Mode */
             --background: #0a0a0a;
             --surface: #171717;
-            --border: #262626;
+            --border: rgba(255, 255, 255, 0.08); /* More subtle border */
             --primary: #ededed;
             --secondary: #a1a1aa;
             --accent: #ffffff;
