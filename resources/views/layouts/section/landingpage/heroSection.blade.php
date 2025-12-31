@@ -37,10 +37,10 @@
         </div>
 
         <button id="prev-slide" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/90 backdrop-blur text-black hover:bg-white p-3 rounded-full border border-white/20 shadow-lg transition-all hover:scale-105 z-20 group">
-            <i class="uil uil-angle-left-b text-xl group-hover:-translate-x-0.5 transition-transform"></i>
+            <svg class="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
         </button>
         <button id="next-slide" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/90 backdrop-blur text-black hover:bg-white p-3 rounded-full border border-white/20 shadow-lg transition-all hover:scale-105 z-20 group">
-            <i class="uil uil-angle-right-b text-xl group-hover:translate-x-0.5 transition-transform"></i>
+            <svg class="w-6 h-6 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
         </button>
     </div>
 </div>
