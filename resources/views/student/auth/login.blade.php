@@ -88,7 +88,7 @@
         <div class="mt-8 pt-6 border-t border-border text-center relative z-10">
             <p class="text-sm text-secondary">
                 Belum punya akun? 
-                <a href="{{ route('student.register') }}" class="font-bold text-primary hover:underline">Daftar Gratis</a>
+                <a href="{{ route('student.register') }}" class="font-bold text-primary hover:underline">Daftar Sekarang</a>
             </p>
         </div>
     </div>

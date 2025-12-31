@@ -125,8 +125,7 @@
                     @else
                         {{-- 2. Jika belum terdaftar --}}
                         <div class="mb-6 flex items-baseline gap-2">
-                             <span class="text-3xl font-bold text-primary">Gratis</span>
-                             <span class="text-sm text-secondary line-through">Rp 0</span>
+                             <span class="text-xl font-bold text-primary">Siap belajar?</span>
                         </div>
                         <form action="{{ route('student.courses.enroll', $course) }}" method="POST">
                             @csrf

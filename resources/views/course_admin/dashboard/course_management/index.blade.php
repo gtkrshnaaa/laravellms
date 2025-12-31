@@ -19,7 +19,6 @@
                 <tr>
                     <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Thumbnail</th>
                     <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Nama Kursus</th>
-                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Harga</th>
                     <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Kategori</th>
                     <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-center">Topik</th>
                     <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-right">Aksi</th>
@@ -40,11 +39,6 @@
                         <td class="px-6 py-4">
                             <div class="text-primary font-medium">{{ $course->name }}</div>
                             <div class="text-secondary text-xs mt-0.5">Dibuat: {{ $course->created_at->format('d M Y') }}</div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                Gratis
-                            </span>
                         </td>
                         <td class="px-6 py-4 text-sm text-secondary">
                             @if($course->subCategory)

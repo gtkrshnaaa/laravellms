@@ -131,8 +131,8 @@
                     </div>
                     <div class="p-5">
                         <div class="flex items-center justify-between mb-6">
-                            <span class="text-3xl font-bold text-primary">Gratis</span>
-                            <span class="text-xs font-bold text-green-600 dark:text-green-400 bg-green-500/10 border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wide">Kursus Terbuka</span>
+                            <span class="text-2xl font-bold text-primary">Mulai Belajar</span>
+                            <span class="text-xs font-bold text-green-600 dark:text-green-400 bg-green-500/10 border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wide">Terbuka untuk Umum</span>
                         </div>
 
                         {{-- CTA Button --}}
