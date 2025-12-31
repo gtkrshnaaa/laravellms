@@ -2,105 +2,123 @@
 @section('title', 'Monitoring Transaksi')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Monitoring Transaksi</h1>
+<div class="mb-6">
+    <h2 class="text-2xl font-bold text-primary mb-2">Monitoring Transaksi</h2>
+    <p class="text-secondary text-sm">Pantau semua transaksi masuk, status pembayaran, dan pendapatan real-time.</p>
+</div>
 
 {{-- STATS CARDS --}}
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-    <div class="bg-white p-4 rounded-lg border-2 border-gray-100">
-        <h3 class="text-sm text-gray-500">Total Pendapatan</h3>
-        <p class="text-2xl font-bold">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
+        <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Pendapatan</h3>
+        <p class="text-2xl font-bold text-primary font-mono">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</p>
     </div>
-    <div class="bg-white p-4 rounded-lg border-2 border-gray-100">
-        <h3 class="text-sm text-gray-500">Transaksi Berhasil</h3>
-        <p class="text-2xl font-bold text-green-600">{{ $successfulTransactions }}</p>
+    <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-green-500/20 shadow-sm hover:shadow-md transition-all duration-300">
+        <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Transaksi Berhasil</h3>
+        <p class="text-3xl font-bold text-green-500 font-mono">{{ $successfulTransactions }}</p>
     </div>
-    <div class="bg-white p-4 rounded-lg border-2 border-gray-100">
-        <h3 class="text-sm text-gray-500">Transaksi Pending</h3>
-        <p class="text-2xl font-bold text-yellow-600">{{ $pendingTransactions }}</p>
+    <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-yellow-500/20 shadow-sm hover:shadow-md transition-all duration-300">
+        <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Tertunda (Pending)</h3>
+        <p class="text-3xl font-bold text-yellow-500 font-mono">{{ $pendingTransactions }}</p>
     </div>
-    <div class="bg-white p-4 rounded-lg border-2 border-gray-100">
-        <h3 class="text-sm text-gray-500">Transaksi Gagal</h3>
-        <p class="text-2xl font-bold text-gray-600">{{ $failedTransactions }}</p>
+    <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-red-500/20 shadow-sm hover:shadow-md transition-all duration-300">
+        <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Gagal / Batal</h3>
+        <p class="text-3xl font-bold text-secondary font-mono">{{ $failedTransactions }}</p>
     </div>
 </div>
 
 {{-- FILTER & SEARCH --}}
-<div class="bg-white p-4 rounded-lg border-2 border-gray-100 mb-6">
+<div class="bg-surface border border-border p-6 rounded-xl mb-8 shadow-sm">
     <form action="{{ route('sysadmin.transactions.index') }}" method="GET">
-        <div class="flex space-x-4 items-end">
-            <div class="flex-1">
-                <label for="search" class="text-sm font-medium">Cari (ID Order / Nama Siswa)</label>
-                <input type="text" name="search" id="search" class="w-full border px-3 py-2 rounded-md" value="{{ request('search') }}" placeholder="Contoh: 1a2b3c4d...">
+        <div class="flex flex-col md:flex-row gap-4 items-end">
+            <div class="flex-1 w-full">
+                <label for="search" class="block text-xs font-bold text-secondary uppercase tracking-wider mb-2">Cari Transaksi</label>
+                <input type="text" name="search" id="search" 
+                    class="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-primary placeholder-secondary/50 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors duration-200" 
+                    value="{{ request('search') }}" 
+                    placeholder="Masukkan ID Order atau Nama Siswa...">
             </div>
-            <div class="flex-1">
-                <label for="status" class="text-sm font-medium">Status</label>
-                <select name="status" id="status" class="w-full border px-3 py-2 rounded-md">
+            <div class="w-full md:w-48">
+                <label for="status" class="block text-xs font-bold text-secondary uppercase tracking-wider mb-2">Status</label>
+                <select name="status" id="status" class="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-primary focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors duration-200">
                     <option value="">Semua Status</option>
                     <option value="paid" @if(request('status') == 'paid') selected @endif>Paid</option>
                     <option value="pending" @if(request('status') == 'pending') selected @endif>Pending</option>
                     <option value="failed" @if(request('status') == 'failed') selected @endif>Failed</option>
                 </select>
             </div>
-            <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded-md">Filter</button>
-            <a href="{{ route('sysadmin.transactions.index') }}" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md">Reset</a>
+            <button type="submit" class="px-6 py-2.5 bg-primary text-background font-medium rounded-lg hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                Filter
+            </button>
+            <a href="{{ route('sysadmin.transactions.index') }}" class="px-6 py-2.5 bg-surface border border-border text-secondary font-medium rounded-lg hover:text-primary hover:border-primary transition-colors focus:ring-2 focus:ring-border">
+                Reset
+            </a>
         </div>
     </form>
 </div>
 
-@if(session('success')) <div class="bg-green-100 text-green-700 p-3 rounded mb-4">{{ session('success') }}</div> @endif
-@if(session('error')) <div class="bg-gray-100 text-gray-700 p-3 rounded mb-4">{{ session('error') }}</div> @endif
-@if(session('info')) <div class="bg-blue-100 text-blue-700 p-3 rounded mb-4">{{ session('info') }}</div> @endif
+@if(session('success')) <div class="bg-green-500/10 border border-green-500/50 text-green-700 dark:text-green-400 p-4 rounded-lg mb-6" role="alert">{{ session('success') }}</div> @endif
+@if(session('error')) <div class="bg-red-500/10 border border-red-500/50 text-red-700 dark:text-red-400 p-4 rounded-lg mb-6" role="alert">{{ session('error') }}</div> @endif
+@if(session('info')) <div class="bg-blue-500/10 border border-blue-500/50 text-blue-700 dark:text-blue-400 p-4 rounded-lg mb-6" role="alert">{{ session('info') }}</div> @endif
 
 {{-- DATA TABLE --}}
-<div class="bg-white border-2 border-gray-100 rounded overflow-x-auto">
-    <table class="w-full text-left">
-        <thead class="bg-gray-50">
-            <tr>
-                <th class="p-4 font-semibold text-sm">ID Order</th>
-                <th class="p-4 font-semibold text-sm">Tanggal</th>
-                <th class="p-4 font-semibold text-sm">Siswa</th>
-                <th class="p-4 font-semibold text-sm">Kursus</th>
-                <th class="p-4 font-semibold text-sm">Jumlah</th>
-                <th class="p-4 font-semibold text-sm">Status</th>
-                <th class="p-4 font-semibold text-sm">Aksi</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-100">
-            @forelse ($orders as $order)
+<div class="bg-surface border border-border rounded-xl shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+            <thead class="bg-secondary/5 border-b border-border">
                 <tr>
-                    <td class="p-4 text-gray-600 font-mono text-xs">{{ $order->id }}</td>
-                    <td class="p-4 text-gray-600 whitespace-nowrap">{{ $order->created_at->format('d M Y, H:i') }}</td>
-                    <td class="p-4 font-medium">{{ $order->student->name ?? 'N/A' }}</td>
-                    <td class="p-4 text-gray-600">{{ $order->course->name ?? 'N/A' }}</td>
-                    <td class="p-4 text-gray-600">Rp{{ number_format($order->amount, 0, ',', '.') }}</td>
-                    <td class="p-4">
-                        @if($order->status == 'paid')
-                            <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">Paid</span>
-                        @elseif($order->status == 'pending')
-                            <span class="px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-100 rounded-full">Pending</span>
-                        @else
-                            <span class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 rounded-full">Failed</span>
-                        @endif
-                    </td>
-                    <td class="p-4 space-x-2 whitespace-nowrap">
-                        <a href="{{ route('sysadmin.transactions.show', $order) }}" class="text-blue-600 hover:underline">Detail</a>
-                        @if($order->status == 'pending')
-                        <form action="{{ route('sysadmin.transactions.sync', $order) }}" method="POST" class="inline" onsubmit="return confirm('Anda yakin ingin menyinkronkan status transaksi ini dengan Midtrans?')">
-                            @csrf
-                            <button type="submit" class="text-purple-600 hover:underline">Sync</button>
-                        </form>
-                        @endif
-                    </td>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">ID Order</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Waktu</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Siswa</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Kursus</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-right">Jumlah</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-center">Status</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-right">Aksi</th>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="7" class="p-4 text-center text-gray-500">Tidak ada data transaksi.</td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="divide-y divide-border">
+                @forelse ($orders as $order)
+                    <tr class="hover:bg-primary/5 transition-colors">
+                        <td class="px-6 py-4 text-secondary font-mono text-xs">{{ $order->id }}</td>
+                        <td class="px-6 py-4 text-secondary whitespace-nowrap">{{ $order->created_at->format('d M Y, H:i') }}</td>
+                        <td class="px-6 py-4 text-primary font-medium">{{ $order->student->name ?? 'N/A' }}</td>
+                        <td class="px-6 py-4 text-secondary">{{ $order->course->name ?? 'N/A' }}</td>
+                        <td class="px-6 py-4 text-primary font-mono text-right">Rp{{ number_format($order->amount, 0, ',', '.') }}</td>
+                        <td class="px-6 py-4 text-center">
+                            @if($order->status == 'paid')
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">Paid</span>
+                            @elseif($order->status == 'pending')
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">Pending</span>
+                            @else
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">Failed</span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4 space-x-2 text-right whitespace-nowrap">
+                            <a href="{{ route('sysadmin.transactions.show', $order) }}" class="text-blue-500 hover:text-blue-600 transition-colors font-medium text-xs">Detail</a>
+                            @if($order->status == 'pending')
+                            <form action="{{ route('sysadmin.transactions.sync', $order) }}" method="POST" class="inline" onsubmit="return confirm('Anda yakin ingin menyinkronkan status transaksi ini dengan Midtrans?')">
+                                @csrf
+                                <button type="submit" class="text-purple-500 hover:text-purple-600 transition-colors font-medium ml-2 text-xs">Sync</button>
+                            </form>
+                            @endif
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7" class="px-6 py-8 text-center text-secondary">
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="block mb-2 text-2xl text-secondary/30">☹</span>
+                                Tidak ada data transaksi.
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
-<div class="mt-4">
+
+<div class="mt-6">
     {{ $orders->links() }}
 </div>
 @endsection
