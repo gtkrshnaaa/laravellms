@@ -34,7 +34,7 @@
         }
 
         @media print {
-            body { margin: 0; padding: 0; }
+            body { margin: 0; padding: 0; background-color: white !important; }
             .print-button-container, .verification-banner { display: none; } /* Sembunyikan banner juga saat print */
             .certificate-container {
                 box-shadow: none !important;
@@ -56,25 +56,34 @@
             }
         }
     </style>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
-<body class="bg-white flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+<body class="bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center min-h-screen p-4 md:p-8 transition-colors duration-300">
 
     {{-- [START PERUBAHAN] Tampilkan tombol hanya untuk siswa yang login --}}
     @auth('student')
     <div class="print-button-container mb-4 text-center max-w-lg">
-        <button onclick="window.print()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition shadow-md">
-            <i class="uil uil-print mr-2"></i>Cetak / Simpan sebagai PDF
+        <button onclick="window.print()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition shadow-md font-bold flex items-center justify-center mx-auto">
+            <i class="uil uil-print mr-2 text-xl"></i>Cetak / Simpan sebagai PDF
         </button>
-        <p class="text-xs text-gray-500 mt-2">Pastikan "Destination" adalah "Save as PDF", Layout "Landscape", dan centang "Background graphics" untuk hasil terbaik.</p>
+        <p class="text-xs text-secondary dark:text-gray-400 mt-2">Pastikan "Destination" adalah "Save as PDF", Layout "Landscape", dan centang "Background graphics" untuk hasil terbaik.</p>
     </div>
     @endauth
     {{-- [END PERUBAHAN] --}}
 
     {{-- [START PERUBAHAN] Tampilkan banner verifikasi untuk pengunjung publik --}}
     @guest('student')
-    <div class="verification-banner mb-4 text-center max-w-lg bg-blue-100 text-blue-800 p-3 rounded-lg border border-blue-200">
-        <p class="font-semibold"><i class="uil uil-check-shield"></i> Halaman Verifikasi Sertifikat</p>
-        <p class="text-xs">Ini adalah halaman publik untuk memverifikasi keaslian sertifikat.</p>
+    <div class="verification-banner mb-6 text-center max-w-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 p-4 rounded-xl border border-blue-500/20 backdrop-blur-sm">
+        <p class="font-bold text-lg mb-1 flex items-center justify-center gap-2">
+            <i class="uil uil-check-shield text-xl"></i> Halaman Verifikasi Sertifikat
+        </p>
+        <p class="text-sm opacity-90">Ini adalah halaman publik untuk memverifikasi keaslian sertifikat ini.</p>
     </div>
     @endguest
     {{-- [END PERUBAHAN] --}}
