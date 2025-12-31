@@ -1,56 +1,70 @@
 @extends('layouts.sysadmin')
+@section('title', 'Manajemen System Admin')
 
 @section('content')
-<div class="p-6">
-
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold mb-4 text-black">Manajemen System Admin</h2>
-        <a href="{{ route('sysadmin.manage_sysadmin.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mb-4 inline-block">+ Tambah Admin</a>
+<div class="flex justify-between items-center mb-6">
+    <div>
+        <h2 class="text-2xl font-bold text-primary">Manajemen System Admin</h2>
+        <p class="text-secondary text-sm">Kelola akun administrator sistem.</p>
     </div>
-    
-    @if (session('success'))
-        <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
+    <a href="{{ route('sysadmin.manage_sysadmin.create') }}" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg font-semibold text-xs text-background uppercase tracking-widest hover:bg-primary/90 active:bg-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition ease-in-out duration-150">
+        + Tambah Admin
+    </a>
+</div>
 
-    <div class="bg-white border border-blue-100 rounded p-4">
-        <table class="w-full text-left">
-            <thead class="bg-blue-50">
+@if (session('success'))
+    <div class="bg-green-500/10 border border-green-500/50 text-green-700 dark:text-green-400 p-4 rounded-lg mb-6" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
+<div class="bg-surface border border-border rounded-xl shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+            <thead class="bg-secondary/5 border-b border-border">
                 <tr>
-                    <th class="border-b p-2 text-gray-600">Nama</th>
-                    <th class="border-b p-2 text-gray-600">Email</th>
-                    <th class="border-b p-2 text-gray-600">Level</th>
-                    <th class="border-b p-2 text-gray-600">Aksi</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Nama</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Email</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-center">Level</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-right">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-blue-100">
+            <tbody class="divide-y divide-border">
                 @forelse ($sysadmins as $sysadmin)
-                    <tr>
-                        <td class="p-2 text-black">{{ $sysadmin->name }}</td>
-                        <td class="p-2 text-gray-600">{{ $sysadmin->email }}</td>
-                        <td class="border-b p-2">
+                    <tr class="hover:bg-primary/5 transition-colors">
+                        <td class="px-6 py-4 text-primary font-medium">{{ $sysadmin->name }}</td>
+                        <td class="px-6 py-4 text-secondary">{{ $sysadmin->email }}</td>
+                        <td class="px-6 py-4 text-center">
                             @if ($sysadmin->level === 'superadmin')
-                                <span class="bg-purple-300 text-purple-500 bg-opacity-20 px-2 py-1 rounded text-xs font-semibold">Super Admin</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    Super Admin
+                                </span>
                             @else
-                                <span class="bg-blue-300 text-blue-500 bg-opacity-20 px-2 py-1 rounded text-xs font-semibold">Admin</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    Admin
+                                </span>
                             @endif
                         </td>
-                        <td class="p-2 space-x-2">
-                            <a href="{{ route('sysadmin.manage_sysadmin.edit', $sysadmin) }}" class="text-blue-600 hover:underline">Edit</a>
+                        <td class="px-6 py-4 space-x-2 text-right">
+                            <a href="{{ route('sysadmin.manage_sysadmin.edit', $sysadmin) }}" class="text-blue-500 hover:text-blue-600 transition-colors font-medium text-xs">Edit</a>
 
                             @if ($sysadmin->level !== 'superadmin')
                                 <form action="{{ route('sysadmin.manage_sysadmin.destroy', $sysadmin) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus admin ini?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-gray-600 hover:text-black">Hapus</button>
+                                    <button type="submit" class="text-red-500 hover:text-red-600 transition-colors font-medium ml-2 text-xs">Hapus</button>
                                 </form>
                             @endif
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="p-4 text-center text-gray-600">Tidak ada admin</td>
+                        <td colspan="4" class="px-6 py-8 text-center text-secondary">
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="block mb-2 text-2xl text-secondary/30">☹</span>
+                                Tidak ada admin.
+                            </div>
+                        </td>
                     </tr>
                 @endforelse
             </tbody>
