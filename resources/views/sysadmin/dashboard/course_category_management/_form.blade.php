@@ -1,11 +1,20 @@
 @csrf
-<div class="mb-4">
-    <label for="name" class="block mb-1 font-medium text-black">Nama Kategori</label>
-    <input type="text" name="name" id="name" class="w-full border border-blue-100 px-3 py-2 rounded-md focus:outline-none focus:border-blue-500 @error('name') border-blue-500 @enderror" value="{{ old('name', $category->name ?? '') }}" required>
-    @error('name') <p class="text-gray-600 text-sm mt-1">{{ $message }}</p> @enderror
-</div>
+<div class="space-y-6">
+    <div>
+        <label for="name" class="block text-sm font-medium text-secondary mb-2">Nama Kategori</label>
+        <input type="text" name="name" id="name" 
+            class="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-primary placeholder-secondary/50 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors duration-200" 
+            placeholder="Masukkan nama kategori (contoh: Pemrograman Web)"
+            value="{{ old('name', $category->name ?? '') }}" required>
+        @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+    </div>
 
-<div class="flex items-center space-x-2">
-    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition">Simpan</button>
-    <a href="{{ route('sysadmin.manage-categories.index') }}" class="text-gray-600 hover:text-black font-bold py-2 px-4 transition">Batal</a>
+    <div class="flex items-center gap-3 pt-4 border-t border-border">
+        <button type="submit" class="px-6 py-2.5 bg-primary text-background font-medium rounded-lg hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2">
+            Simpan Data
+        </button>
+        <a href="{{ route('sysadmin.manage-categories.index') }}" class="px-6 py-2.5 bg-surface border border-border text-secondary font-medium rounded-lg hover:text-primary hover:border-primary transition-colors focus:ring-2 focus:ring-border">
+            Batal
+        </a>
+    </div>
 </div>
