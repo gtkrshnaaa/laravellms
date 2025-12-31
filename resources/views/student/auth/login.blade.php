@@ -27,7 +27,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
-<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4 font-sans text-primary">
+<body class="font-sans text-primary flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-900 dark:to-black">
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <div class="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
         <div class="text-center mb-8">
             <h1 class="text-2xl font-bold tracking-tight mb-2">Selamat Datang Kembali</h1>

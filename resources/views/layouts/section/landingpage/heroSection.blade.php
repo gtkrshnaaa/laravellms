@@ -16,7 +16,8 @@
             <div class="flex transition-transform duration-500 ease-in-out" id="carousel-track">
                 
                 @foreach ($images as $index => $image)
-                    <div class="w-full flex-shrink-0">
+                    <div class="w-full flex-shrink-0 relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none"></div>
                         <img 
                             src="{{ $image ?? 'https://placehold.co/1280x384/18181b/ffffff?text=Kelas+Unggulan' }}" 
                             alt="Promosi Kursus {{ $index + 1 }}" 
@@ -24,6 +25,11 @@
                             class="w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover"
                             onerror="this.onerror=null;this.src='https://placehold.co/1280x384/262626/ededed?text=Gambar+Tidak+Tersedia';"
                         >
+                        {{-- Optional Caption --}}
+                        <div class="absolute bottom-4 left-4 md:bottom-8 md:left-8 z-20 text-white">
+                            <h2 class="text-xl md:text-3xl font-bold tracking-tight">Mulai Karir Profesional Anda</h2>
+                            <p class="text-sm md:text-base text-gray-200 mt-1">Belajar dari instruktur terbaik di bidangnya.</p>
+                        </div>
                     </div>
                 @endforeach
 
