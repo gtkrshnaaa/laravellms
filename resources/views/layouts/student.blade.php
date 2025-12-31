@@ -159,16 +159,25 @@
                 
                 <div class="h-4 w-[1px] bg-border mx-2"></div>
 
+                @auth('student')
                 <a href="{{ route('student.profile.edit') }}" class="text-sm font-medium {{ request()->routeIs('student.profile.edit') ? 'text-primary' : 'text-secondary hover:text-primary' }} transition-colors">
                     {{ Auth::guard('student')->user()->name }}
                 </a>
                 
                 <form method="POST" action="{{ route('student.logout') }}">
                     @csrf
-                    <button type="submit" class="text-sm font-medium text-red-500 hover:text-red-400 transition-colors">
+                    <button type="submit" class="text-sm font-medium text-red-500 hover:text-red-600 transition-colors">
                         Logout
                     </button>
                 </form>
+                @else
+                <a href="{{ route('student.login') }}" class="text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+                    Login
+                </a>
+                <a href="{{ route('student.register') }}" class="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20">
+                    Daftar
+                </a>
+                @endauth
             </div>
             
             <!-- Mobile Menu Button -->
