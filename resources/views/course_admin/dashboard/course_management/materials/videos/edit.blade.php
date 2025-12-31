@@ -1,33 +1,19 @@
 @extends('layouts.course_admin')
 @section('title', 'Edit Video')
+
 @section('content')
-    <a href="{{ route('course_admin.management.topics.materials', $topic) }}" class="text-sm text-blue-600 hover:underline mb-4 inline-block transition duration-200">
-        < Kembali ke Kelola Materi
-    </a>
-    <h1 class="text-2xl font-bold text-black mb-4">Edit Video: {{ $video->title }}</h1>
-    <div class="bg-white p-6 rounded-lg border border-blue-100">
+<div class="max-w-xl mx-auto">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold text-primary">Edit Video</h2>
+        <p class="text-secondary text-sm">Mengubah video: <span class="font-medium text-primary">{{ $video->title }}</span></p>
+    </div>
+
+    <div class="p-6 bg-surface border border-border rounded-xl shadow-sm">
         <form action="{{ route('course_admin.management.topics.videos.update', [$topic, $video]) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="mb-4">
-                <label for="title" class="block text-black font-medium mb-2">Judul Video</label>
-                <input type="text" name="title" id="title" class="w-full border border-blue-100 px-3 py-2 rounded-md shadow-sm focus:border-blue-500 @error('title') border-blue-500 @enderror" value="{{ old('title', $video->title ?? '') }}" required>
-                @error('title') <p class="text-gray-600 text-sm mt-1">{{ $message }}</p> @enderror
-            </div>
-            <div class="mb-4">
-                <label for="youtube_url" class="block text-black font-medium mb-2">URL YouTube</label>
-                <input type="url" name="youtube_url" id="youtube_url" class="w-full border border-blue-100 px-3 py-2 rounded-md shadow-sm focus:border-blue-500 @error('youtube_url') border-blue-500 @enderror" value="{{ old('youtube_url', $video->youtube_url ?? '') }}" required>
-                @error('youtube_url') <p class="text-gray-600 text-sm mt-1">{{ $message }}</p> @enderror
-            </div>
-            <div class="mb-6">
-                <label for="order" class="block text-black font-medium mb-2">Urutan</label>
-                <input type="number" name="order" id="order" class="w-full border border-blue-100 px-3 py-2 rounded-md shadow-sm focus:border-blue-500 @error('order') border-blue-500 @enderror" value="{{ old('order', $video->order ?? '0') }}" required>
-                @error('order') <p class="text-gray-600 text-sm mt-1">{{ $message }}</p> @enderror
-            </div>
-            <div class="flex items-center">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">Simpan Video</button>
-                <a href="{{ route('course_admin.management.topics.materials', $topic) }}" class="ml-4 text-gray-600 hover:text-black transition duration-200">Batal</a>
-            </div>
+            @include('course_admin.dashboard.course_management.materials.videos._form')
         </form>
     </div>
+</div>
 @endsection
