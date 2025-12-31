@@ -15,6 +15,7 @@ class StudentFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'division' => fake()->randomElement(['IT', 'Marketing', 'HR', 'Finance', 'Operations']),
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // default password
         ];

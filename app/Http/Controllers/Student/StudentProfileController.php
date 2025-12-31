@@ -22,11 +22,13 @@ class StudentProfileController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:students,email,' . $student->id,
+            'division' => 'nullable|string|in:IT,Marketing,HR,Finance,Operations',
             'password' => 'nullable|string|min:6|confirmed',
         ]);
 
         $student->name = $request->name;
         $student->email = $request->email;
+        $student->division = $request->division;
         if ($request->filled('password')) {
             $student->password = Hash::make($request->password);
         }

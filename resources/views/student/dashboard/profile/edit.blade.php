@@ -24,10 +24,21 @@
                 @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
             
-             <div>
+            <div>
                 <label for="email" class="block text-sm font-bold text-primary mb-2">Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email', $student->email) }}" required class="block w-full px-4 py-3 bg-background border border-border rounded-xl text-primary placeholder-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all">
                 @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div>
+                <label for="division" class="block text-sm font-bold text-primary mb-2">Divisi / Departemen</label>
+                <select name="division" id="division" class="block w-full px-4 py-3 bg-background border border-border rounded-xl text-primary placeholder-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all">
+                    <option value="">-- Pilih Divisi --</option>
+                    @foreach(['IT', 'Marketing', 'HR', 'Finance', 'Operations'] as $div)
+                        <option value="{{ $div }}" {{ old('division', $student->division) == $div ? 'selected' : '' }}>{{ $div }}</option>
+                    @endforeach
+                </select>
+                @error('division') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
             <hr class="my-6 border-border">
