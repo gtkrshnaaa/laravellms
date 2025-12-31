@@ -70,7 +70,7 @@
                 <h2 class="text-2xl font-bold text-primary mb-6">Konten Kursus</h2>
                 <div class="space-y-4">
                     @forelse($course->topics as $topic)
-                        <div class="bg-surface border border-border rounded-xl overflow-hidden shadow-sm" x-data="{ open: false }">
+                        <div class="bg-surface border border-border rounded-2xl overflow-hidden shadow-sm" x-data="{ open: false }">
                             <button @click="open = !open" class="w-full text-left p-4 md:p-5 flex justify-between items-center bg-secondary/5 hover:bg-secondary/10 transition-colors">
                                 <span class="font-bold text-primary flex items-center gap-3">
                                     <svg class="w-5 h-5 text-secondary" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -160,7 +160,7 @@
                 </div>
 
                 {{-- Instructor Card (Mini) --}}
-                <div class="bg-surface border border-border rounded-xl p-5 shadow-sm">
+                <div class="bg-surface border border-border rounded-2xl p-5 shadow-sm">
                     <h3 class="font-bold text-primary mb-4 text-sm uppercase tracking-wider">Instruktur</h3>
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">

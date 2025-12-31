@@ -57,7 +57,7 @@
         {{-- === Course Grid Responsif === --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse ($courses as $course)
-                <div class="group bg-surface border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors duration-300 flex flex-col h-full">
+                <div class="group bg-surface border border-border rounded-2xl overflow-hidden hover:border-primary/20 transition-all duration-300 flex flex-col h-full shadow-sm">
                     <a href="{{ route('course.show.public', $course) }}" class="block relative overflow-hidden aspect-video">
                         <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/18181b/ffffff?text=Course' }}" 
                              alt="{{ $course->name }}" 
