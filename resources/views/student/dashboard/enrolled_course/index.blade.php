@@ -7,7 +7,7 @@
 
     @if (session('success'))
         <div class="bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 p-4 mb-6 rounded-xl flex items-center gap-2" role="alert">
-            <i class="uil uil-check-circle text-xl"></i>
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <p>{{ session('success') }}</p>
         </div>
     @endif
@@ -40,7 +40,7 @@
                     <div class="mt-6 pt-4 border-t border-border mt-auto">
                         @if($progressPercentage == 100)
                             <a href="{{ route('student.course.certificate', $course) }}" target="_blank" class="inline-flex justify-center items-center w-full px-4 py-3 rounded-xl bg-green-600 text-white font-bold hover:bg-green-700 transition-all shadow-lg shadow-green-600/20 hover:-translate-y-0.5">
-                                <i class="uil uil-award mr-2"></i> Lihat Sertifikat
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Lihat Sertifikat
                             </a>
                         @else
                             <a href="{{ route('student.enrolled_course.show', $course) }}" class="inline-flex justify-center items-center w-full px-4 py-3 rounded-xl bg-primary text-background font-bold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
@@ -53,12 +53,12 @@
         @empty
             <div class="col-span-full bg-surface p-12 rounded-2xl border border-dashed border-border text-center">
                 <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="uil uil-book-open text-4xl text-secondary"></i>
+                    <svg class="w-10 h-10 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                 </div>
                 <h3 class="text-xl font-bold text-primary mb-2">Belum Ada Kursus</h3>
                 <p class="text-secondary max-w-md mx-auto mb-8">Anda belum mendaftar di kursus manapun. Mulai perjalanan belajar Anda hari ini!</p>
                 <a href="{{ route('student.courses.index') }}" class="inline-flex items-center px-6 py-3 rounded-xl bg-primary text-background font-bold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                    <i class="uil uil-search mr-2"></i> Cari Kursus Sekarang
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg> Cari Kursus Sekarang
                 </a>
             </div>
         @endforelse

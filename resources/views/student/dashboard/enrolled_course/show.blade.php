@@ -18,7 +18,11 @@
                 @if(isset($lastAttempt))
                 <div class="p-4 mb-6 text-sm rounded-xl border {{ $lastAttempt->passed ? 'bg-green-500/10 border-green-500/20 text-green-600' : 'bg-yellow-500/10 border-yellow-500/20 text-yellow-600' }}" role="alert">
                     <span class="font-bold flex items-center gap-2">
-                        <i class="uil {{ $lastAttempt->passed ? 'uil-check-circle' : 'uil-exclamation-circle' }}"></i>
+                        @if($lastAttempt->passed)
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        @else
+                            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        @endif
                         Percobaan Terakhir Anda:
                     </span> 
                     Skor {{ round($lastAttempt->score) }}. {{ $lastAttempt->passed ? 'Anda sudah lulus kuis ini.' : 'Anda belum lulus, silakan coba lagi.' }}
@@ -90,8 +94,8 @@
                                             elseif ($previous_material instanceof \App\Models\Quiz) $prev_route = route('student.enrolled_course.quiz', [$course, $previous_material]);
                                             elseif ($previous_material instanceof \App\Models\GoogleDriveMaterial) $prev_route = route('student.enrolled_course.googledrive', [$course, $previous_material]);
                                         @endphp
-                                        <a href="{{ $prev_route }}" class="px-5 py-2.5 rounded-xl bg-surface border border-border text-secondary font-medium hover:text-primary hover:border-primary transition-all">
-                                            <i class="uil uil-arrow-left mr-1"></i> Sebelumnya
+                                        <a href="{{ $prev_route }}" class="px-5 py-2.5 rounded-xl bg-surface border border-border text-secondary font-medium hover:text-primary hover:border-primary transition-all flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Sebelumnya
                                         </a>
                                     @else
                                         <span></span>
@@ -111,9 +115,9 @@
                         </div>
                         
                         <a href="{{ $current_material->google_drive_url }}" target="_blank" class="inline-flex items-center px-6 py-4 rounded-xl bg-surface border border-border text-primary font-bold hover:bg-primary/5 hover:border-primary transition-all group w-full justify-center">
-                            <i class="uil uil-google-drive-alt text-2xl mr-3 text-secondary group-hover:text-primary transition-colors"></i> 
+                            <svg class="w-6 h-6 mr-3 text-secondary group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg> 
                             <span>Buka Materi di Google Drive</span>
-                            <i class="uil uil-external-link-alt ml-2 text-secondary group-hover:text-primary"></i>
+                            <svg class="w-4 h-4 ml-2 text-secondary group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
 
                         {{-- Tombol navigasi --}}
@@ -152,7 +156,7 @@
             @else
                 <div class="flex flex-col items-center justify-center h-full text-center p-12">
                      <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-4">
-                        <i class="uil uil-layer-group text-3xl"></i>
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                     </div>
                     <h1 class="text-2xl font-bold text-primary">Kursus ini belum memiliki materi.</h1>
                     <p class="text-secondary mt-2">Silakan kembali lagi nanti saat instruktur sudah menambahkan konten.</p>
@@ -208,13 +212,13 @@
                                class="flex items-center p-3 rounded-xl text-left w-full transition-all border border-transparent {{ $isLocked ? 'opacity-50 cursor-not-allowed text-secondary bg-gray-50 dark:bg-white/5' : ($is_active ? 'bg-primary/5 text-primary font-bold border-primary/10 shadow-sm' : 'text-secondary hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:border-border') }}">
                                 
                                 @if ($is_completed)
-                                    <i class="uil uil-check-circle text-lg text-green-500 shrink-0"></i>
+                                    <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 @elseif ($isLocked)
-                                    <i class="uil uil-lock text-lg text-secondary/50 shrink-0"></i>
+                                    <svg class="w-5 h-5 text-secondary/50 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                                 @else
-                                    @if($material instanceof \App\Models\Video) <i class="uil uil-play-circle text-lg {{ $is_active ? 'text-primary' : 'text-secondary' }} shrink-0"></i> @endif
-                                    @if($material instanceof \App\Models\Quiz) <i class="uil uil-file-question-alt text-lg {{ $is_active ? 'text-primary' : 'text-secondary' }} shrink-0"></i> @endif
-                                    @if($material instanceof \App\Models\GoogleDriveMaterial) <i class="uil uil-google-drive-alt text-lg {{ $is_active ? 'text-primary' : 'text-secondary' }} shrink-0"></i> @endif
+                                    @if($material instanceof \App\Models\Video) <svg class="w-5 h-5 {{ $is_active ? 'text-primary' : 'text-secondary' }} shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> @endif
+                                    @if($material instanceof \App\Models\Quiz) <svg class="w-5 h-5 {{ $is_active ? 'text-primary' : 'text-secondary' }} shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg> @endif
+                                    @if($material instanceof \App\Models\GoogleDriveMaterial) <svg class="w-5 h-5 {{ $is_active ? 'text-primary' : 'text-secondary' }} shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg> @endif
                                 @endif
                                 
                                 <span class="ml-3 flex-1 text-xs md:text-sm line-clamp-1">{{ $material->title }}</span>
@@ -241,7 +245,7 @@
                         @foreach ($course->followUpLinks as $link)
                             <li>
                                 <a href="{{ $link->url }}" target="_blank" class="flex items-center p-3 rounded-xl text-left w-full text-sm text-secondary hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary border border-transparent hover:border-border transition-all">
-                                    <i class="uil uil-external-link-alt text-lg text-blue-500 shrink-0"></i>
+                                    <svg class="w-4 h-4 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                                     <span class="ml-3 flex-1">{{ $link->label }}</span>
                                 </a>
                             </li>
