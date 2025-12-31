@@ -3,47 +3,55 @@
 @section('title', 'Profil Saya')
 
 @section('content')
-    <h1 class="text-3xl font-bold text-black mb-6">Profil Saya</h1>
-    <div class="bg-white p-8 rounded-lg border border-blue-100 max-w-2xl">
+    <h1 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 mb-8">Profil Saya</h1>
+    <div class="bg-surface p-8 rounded-2xl border border-border max-w-2xl relative overflow-hidden shadow-sm">
+        {{-- Gradient Overlay --}}
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
         @if (session('success'))
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+            <div class="bg-green-500/10 border border-green-500/20 text-green-600 p-4 mb-6 rounded-xl flex items-center gap-2" role="alert">
+                <i class="uil uil-check-circle text-xl"></i>
                 <p>{{ session('success') }}</p>
             </div>
         @endif
-        <form action="{{ route('student.profile.update') }}" method="POST" class="space-y-6">
+        <form action="{{ route('student.profile.update') }}" method="POST" class="space-y-6 relative z-10">
             @csrf
             @method('PUT')
             
             <div>
-                <label for="name" class="block text-sm font-medium text-black">Nama Lengkap</label>
-                <input type="text" name="name" id="name" value="{{ old('name', $student->name) }}" required class="mt-1 block w-full px-3 py-2 border @error('name') border-blue-500 @else border-blue-100 @enderror rounded-md focus:outline-none focus:border-blue-500">
-                @error('name') <p class="text-gray-600 text-xs mt-1">{{ $message }}</p> @enderror
+                <label for="name" class="block text-sm font-bold text-primary mb-2">Nama Lengkap</label>
+                <input type="text" name="name" id="name" value="{{ old('name', $student->name) }}" required class="block w-full px-4 py-3 bg-background border border-border rounded-xl text-primary placeholder-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all">
+                @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
             
              <div>
-                <label for="email" class="block text-sm font-medium text-black">Email</label>
-                <input type="email" name="email" id="email" value="{{ old('email', $student->email) }}" required class="mt-1 block w-full px-3 py-2 border @error('email') border-blue-500 @else border-blue-100 @enderror rounded-md focus:outline-none focus:border-blue-500">
-                @error('email') <p class="text-gray-600 text-xs mt-1">{{ $message }}</p> @enderror
+                <label for="email" class="block text-sm font-bold text-primary mb-2">Email</label>
+                <input type="email" name="email" id="email" value="{{ old('email', $student->email) }}" required class="block w-full px-4 py-3 bg-background border border-border rounded-xl text-primary placeholder-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all">
+                @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
 
-            <hr class="my-4 border-blue-100">
+            <hr class="my-6 border-border">
 
-            <p class="text-gray-600">Ganti Password (isi jika ingin mengubah)</p>
+            <div class="flex items-center gap-2 mb-4">
+                <i class="uil uil-lock text-secondary text-lg"></i>
+                <p class="text-primary font-bold">Ganti Password</p>
+                <span class="text-xs text-secondary">(isi jika ingin mengubah)</span>
+            </div>
 
             <div>
-                <label for="password" class="block text-sm font-medium text-black">Password Baru</label>
-                <input type="password" name="password" id="password" class="mt-1 block w-full px-3 py-2 border @error('password') border-blue-500 @else border-blue-100 @enderror rounded-md focus:outline-none focus:border-blue-500">
-                 @error('password') <p class="text-gray-600 text-xs mt-1">{{ $message }}</p> @enderror
+                <label for="password" class="block text-sm font-bold text-primary mb-2">Password Baru</label>
+                <input type="password" name="password" id="password" class="block w-full px-4 py-3 bg-background border border-border rounded-xl text-primary placeholder-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all">
+                 @error('password') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
             </div>
             
             <div>
-                <label for="password_confirmation" class="block text-sm font-medium text-black">Konfirmasi Password Baru</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="mt-1 block w-full px-3 py-2 border border-blue-100 rounded-md focus:outline-none focus:border-blue-500">
+                <label for="password_confirmation" class="block text-sm font-bold text-primary mb-2">Konfirmasi Password Baru</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="block w-full px-4 py-3 bg-background border border-border rounded-xl text-primary placeholder-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all">
             </div>
 
-            <div>
-                <button type="submit" class="inline-flex justify-center py-2 px-6 border border-blue-600 rounded-md font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                    Simpan Perubahan
+            <div class="pt-4">
+                <button type="submit" class="w-full sm:w-auto inline-flex justify-center items-center py-3 px-8 rounded-xl bg-primary text-background font-bold hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    <i class="uil uil-save mr-2"></i> Simpan Perubahan
                 </button>
             </div>
         </form>

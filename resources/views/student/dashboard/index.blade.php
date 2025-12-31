@@ -5,18 +5,18 @@
 
 @section('content')
     <div class="mb-8">
-        <h1 class="text-3xl font-bold text-primary tracking-tight">Halo, {{ $student->name }}!</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">Halo, {{ $student->name }}!</h1>
         <p class="text-secondary mt-1">Selamat datang kembali! Mari lanjutkan progres belajarmu hari ini.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {{-- Total Kursus Diikuti --}}
-        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+        <div class="relative overflow-hidden p-6 rounded-2xl border border-border group transition-all duration-300 bg-gradient-to-br from-surface to-gray-100 dark:from-surface dark:to-gray-900 shadow-sm hover:shadow-md">
             <div class="flex justify-between items-start mb-4">
-                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 border border-blue-500/20 shadow-sm">
                     <i class="uil uil-book-reader text-xl"></i>
                 </div>
-                 <span class="text-xs font-medium text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full">Aktif</span>
+                 <span class="text-xs font-medium text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full border border-blue-500/20">Aktif</span>
             </div>
             <div class="mb-1">
                 <h3 class="text-secondary text-sm font-medium">Kursus Diikuti</h3>
@@ -25,12 +25,12 @@
         </div>
 
         {{-- Kursus Selesai (100%) --}}
-        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+        <div class="relative overflow-hidden p-6 rounded-2xl border border-border group transition-all duration-300 bg-gradient-to-br from-surface to-gray-100 dark:from-surface dark:to-gray-900 shadow-sm hover:shadow-md">
             <div class="flex justify-between items-start mb-4">
-                <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600">
+                <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600 border border-green-500/20 shadow-sm">
                     <i class="uil uil-check-circle text-xl"></i>
                 </div>
-                 <span class="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full">Selesai</span>
+                 <span class="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full border border-green-500/20">Selesai</span>
             </div>
             <div class="mb-1">
                 <h3 class="text-secondary text-sm font-medium">Kursus Tuntas</h3>
@@ -39,12 +39,12 @@
         </div>
 
         {{-- Sertifikat Diperoleh --}}
-        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+        <div class="relative overflow-hidden p-6 rounded-2xl border border-border group transition-all duration-300 bg-gradient-to-br from-surface to-gray-100 dark:from-surface dark:to-gray-900 shadow-sm hover:shadow-md">
              <div class="flex justify-between items-start mb-4">
-                <div class="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600">
+                <div class="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600 border border-yellow-500/20 shadow-sm">
                     <i class="uil uil-award text-xl"></i>
                 </div>
-                 <span class="text-xs font-medium text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded-full">Prestasi</span>
+                 <span class="text-xs font-medium text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded-full border border-yellow-500/20">Prestasi</span>
             </div>
             <div class="mb-1">
                 <h3 class="text-secondary text-sm font-medium">Sertifikat</h3>
