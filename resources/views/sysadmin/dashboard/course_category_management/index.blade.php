@@ -2,54 +2,74 @@
 @section('title', 'Manajemen Kategori Kursus')
 
 @section('content')
-<div class="flex justify-between items-center mb-4">
-    <h2 class="text-2xl font-bold text-black">Manajemen Kategori Kursus</h2>
-    <a href="{{ route('sysadmin.manage-categories.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-semibold transition">
+<div class="flex justify-between items-center mb-6">
+    <div>
+        <h2 class="text-2xl font-bold text-primary">Manajemen Kategori Kursus</h2>
+        <p class="text-secondary text-sm">Kelola kategori utama untuk pengelompokan kursus.</p>
+    </div>
+    <a href="{{ route('sysadmin.manage-categories.create') }}" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg font-semibold text-xs text-background uppercase tracking-widest hover:bg-primary/90 active:bg-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition ease-in-out duration-150">
         + Tambah Kategori
     </a>
 </div>
 
 @if (session('success'))
-    <div class="bg-green-100 text-green-700 p-3 rounded mb-4 border border-green-200">{{ session('success') }}</div>
+    <div class="bg-green-500/10 border border-green-500/50 text-green-700 dark:text-green-400 p-4 rounded-lg mb-6" role="alert">
+        {{ session('success') }}
+    </div>
 @endif
 
-<div class="bg-white border border-blue-100 rounded-lg overflow-x-auto">
-    <table class="w-full text-left">
-        <thead class="bg-blue-50">
-            <tr>
-                <th class="p-4 font-semibold text-gray-600">Nama Kategori</th>
-                <th class="p-4 font-semibold text-gray-600">Slug</th>
-                <th class="p-4 font-semibold text-gray-600">Jumlah Sub-Kategori</th>
-                <th class="p-4 font-semibold text-gray-600">Aksi</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-blue-100">
-            @forelse ($categories as $category)
+<div class="bg-surface border border-border rounded-xl shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm">
+            <thead class="bg-secondary/5 border-b border-border">
                 <tr>
-                    <td class="p-4 text-black">{{ $category->name }}</td>
-                    <td class="p-4 font-mono text-sm text-gray-600">{{ $category->slug }}</td>
-                    <td class="p-4 text-gray-600">{{ $category->sub_categories_count }}</td>
-                    <td class="p-4 space-x-2 whitespace-nowrap">
-                        <a href="{{ route('sysadmin.manage-sub-categories.index', $category) }}" class="bg-blue-100 text-blue-800 px-3 py-1 text-sm rounded-md font-bold hover:bg-blue-200 transition">
-                            Manage
-                        </a>
-                        <a href="{{ route('sysadmin.manage-categories.edit', $category) }}" class="text-blue-600 hover:underline">Edit</a>
-                        <form action="{{ route('sysadmin.manage-categories.destroy', $category) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus? Menghapus kategori akan menghapus semua sub-kategorinya.')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-gray-600 hover:text-black">Hapus</button>
-                        </form>
-                    </td>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Nama Kategori</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs">Slug</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-center">Sub-Kategori</th>
+                    <th class="px-6 py-4 font-semibold text-secondary uppercase tracking-wider text-xs text-right">Aksi</th>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="4" class="p-4 text-center text-gray-600">Belum ada kategori.</td>
-                </tr>
-            @endforelse
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="divide-y divide-border">
+                @forelse ($categories as $category)
+                    <tr class="hover:bg-primary/5 transition-colors">
+                        <td class="px-6 py-4 text-primary font-medium">{{ $category->name }}</td>
+                        <td class="px-6 py-4 text-secondary font-mono text-xs">{{ $category->slug }}</td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100/50 text-blue-800 dark:text-blue-200">
+                                {{ $category->sub_categories_count }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 space-x-2 text-right whitespace-nowrap">
+                            <a href="{{ route('sysadmin.manage-sub-categories.index', $category) }}" class="inline-flex items-center px-3 py-1 bg-surface border border-border rounded-md text-xs font-medium text-secondary hover:text-primary hover:border-primary transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                </svg>
+                                Manage Sub
+                            </a>
+                            <a href="{{ route('sysadmin.manage-categories.edit', $category) }}" class="text-blue-500 hover:text-blue-600 transition-colors font-medium text-xs">Edit</a>
+                            <form action="{{ route('sysadmin.manage-categories.destroy', $category) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus? Menghapus kategori akan menghapus semua sub-kategorinya.')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500 hover:text-red-600 transition-colors font-medium ml-1 text-xs">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4" class="px-6 py-8 text-center text-secondary">
+                            <div class="flex flex-col items-center justify-center">
+                                <span class="block mb-2 text-2xl text-secondary/30">☹</span>
+                                Belum ada kategori yang dibuat.
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
-<div class="mt-4">
+
+<div class="mt-6">
     {{ $categories->links() }}
 </div>
 @endsection
