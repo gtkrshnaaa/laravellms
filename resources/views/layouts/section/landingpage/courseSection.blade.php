@@ -1,39 +1,39 @@
 {{-- File: resources/views/layouts/section/landingpage/courseSection.blade.php --}}
 
-<div class="w-full bg-white py-12">
+<div class="w-full bg-background py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Judul dan Deskripsi Section --}}
-        <div class="max-w-3xl mb-8">
-            <h2 class="text-3xl font-bold text-black">
+        <div class="max-w-3xl mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary tracking-tight">
                 Gerbang Anda Menuju Karir Profesional
             </h2>
-            <p class="mt-2 text-black">
-                Dari layanan kabin premium hingga manajemen perhotelan bintang lima, Laravel mendukung pengembangan karir profesional Anda.
+            <p class="mt-4 text-secondary text-lg leading-relaxed">
+                Dari layanan kabin premium hingga manajemen perhotelan bintang lima, kami mendukung pengembangan karir Anda.
             </p>
         </div>
 
         {{-- Tampilkan notifikasi jika ada pencarian --}}
         @isset($searchTerm)
-        <div class="bg-blue-50 border-l-4 border-blue-500 text-black p-4 mb-6 rounded-md" role="alert">
-            <p>Menampilkan hasil pencarian untuk: <span class="font-bold">"{{ $searchTerm }}"</span>. <a href="{{ route('landingpage') }}" class="font-bold underline">Lihat semua kursus</a>.</p>
+        <div class="bg-surface border border-primary/20 text-primary p-4 mb-8 rounded-lg flex items-center gap-3" role="alert">
+            <i class="uil uil-search text-xl"></i>
+            <p>Menampilkan hasil pencarian untuk: <span class="font-bold">"{{ $searchTerm }}"</span>. <a href="{{ route('landingpage') }}" class="font-bold underline hover:text-secondary">Lihat semua kursus</a>.</p>
         </div>
         @endisset
 
         {{-- Bagian Tab Kategori Utama (Dinamis) --}}
         @if($categories->isNotEmpty())
-            <div class="border-b border-blue-100">
-                <nav class="-mb-px flex space-x-4 sm:space-x-8 overflow-x-auto" aria-label="Tabs">
-                    {{-- PERUBAHAN DI SINI: Tambahkan Tombol "Semua Kategori" --}}
+            <div class="border-b border-border mb-8">
+                <nav class="-mb-px flex space-x-6 overflow-x-auto no-scrollbar" aria-label="Tabs">
                     <a href="{{ route('landingpage') }}"
-                        class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm
-                               {{ !$selectedCategory ? 'border-blue-600 text-blue-600' : 'border-transparent text-black hover:text-blue-600 hover:border-blue-300' }}">
+                        class="whitespace-nowrap py-4 border-b-2 font-medium text-sm transition-colors
+                               {{ !$selectedCategory ? 'border-primary text-primary' : 'border-transparent text-secondary hover:text-primary hover:border-secondary/50' }}">
                         Semua Kategori
                     </a>
 
                     @foreach ($categories as $category)
                         <a href="{{ route('landingpage', ['category' => $category->slug]) }}"
-                            class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm
-                                   {{ ($selectedCategory && $selectedCategory->id == $category->id) ? 'border-blue-600 text-blue-600' : 'border-transparent text-black hover:text-blue-600 hover:border-blue-300' }}">
+                            class="whitespace-nowrap py-4 border-b-2 font-medium text-sm transition-colors
+                                   {{ ($selectedCategory && $selectedCategory->id == $category->id) ? 'border-primary text-primary' : 'border-transparent text-secondary hover:text-primary hover:border-secondary/50' }}">
                             {{ $category->name }}
                         </a>
                     @endforeach
@@ -42,11 +42,11 @@
 
             {{-- Bagian Tab Sub-Kategori (Dinamis) --}}
             @if($selectedCategory && $selectedCategory->subCategories->isNotEmpty())
-                <div class="py-6 flex items-center space-x-3 overflow-x-auto">
+                <div class="flex items-center gap-3 overflow-x-auto pb-8 no-scrollbar">
                     @foreach ($selectedCategory->subCategories as $subCategory)
                         <a href="{{ route('landingpage', ['category' => $selectedCategory->slug, 'subcategory' => $subCategory->slug]) }}"
-                            class="px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap
-                                   {{ ($selectedSubCategory && $selectedSubCategory->id == $subCategory->id) ? 'bg-blue-600 text-white' : 'bg-white text-black border border-blue-100 hover:bg-blue-50' }}">
+                            class="px-4 py-1.5 rounded-full font-medium text-sm whitespace-nowrap transition-colors border
+                                   {{ ($selectedSubCategory && $selectedSubCategory->id == $subCategory->id) ? 'bg-primary text-background border-primary' : 'bg-surface text-secondary border-border hover:border-primary hover:text-primary' }}">
                             {{ $subCategory->name }}
                         </a>
                     @endforeach
@@ -55,49 +55,52 @@
         @endif
         
         {{-- === Course Grid Responsif === --}}
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse ($courses as $course)
-                <div class="group">
-                    <a href="{{ route('course.show.public', $course) }}" class="block">
-                        <div class="border border-blue-100 group-hover:border-blue-600 transition">
-                             <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Course' }}" alt="{{ $course->name }}" class="w-full h-32 sm:h-40 object-cover">
-                         </div>
+                <div class="group bg-surface border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors duration-300 flex flex-col h-full">
+                    <a href="{{ route('course.show.public', $course) }}" class="block relative overflow-hidden aspect-video">
+                        <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : 'https://placehold.co/600x400/18181b/ffffff?text=Course' }}" 
+                             alt="{{ $course->name }}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                      </a>
-                    <div class="pt-2">
-                        <h3 class="text-sm sm:text-md font-bold text-black truncate-2-lines">
-                            <a href="{{ route('course.show.public', $course) }}" class="hover:text-blue-600">{{ $course->name }}</a>
-                        </h3>
-                        <p class="text-xs text-black mt-1 truncate">Oleh {{ $course->courseAdmin->name }}</p>
-                        
+                    <div class="p-5 flex flex-col flex-grow">
                         @if($course->subCategory)
-                            <p class="text-xs font-semibold bg-white inline-block px-2 rounded-md text-black border border-blue-100 mt-2">{{ $course->subCategory->name }}</p>
+                            <div class="mb-2">
+                                <span class="text-[10px] font-bold tracking-wider uppercase text-secondary/70 border border-border px-2 py-0.5 rounded-full">
+                                    {{ $course->subCategory->name }}
+                                </span>
+                            </div>
                         @endif
+
+                        <h3 class="text-base font-bold text-primary mb-2 line-clamp-2 leading-tight">
+                            <a href="{{ route('course.show.public', $course) }}" class="hover:underline">{{ $course->name }}</a>
+                        </h3>
+                        
+                        <div class="mt-auto pt-4 flex items-center justify-between border-t border-border/50">
+                            <p class="text-xs text-secondary flex items-center gap-1.5">
+                                <i class="uil uil-user-circle text-base"></i>
+                                {{ $course->courseAdmin->name }}
+                            </p>
+                            <a href="{{ route('course.show.public', $course) }}" class="text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform inline-flex items-center">
+                                View <i class="uil uil-arrow-right ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             @empty
-                <div class="col-span-full text-center py-12">
-                    <p class="text-black">Saat ini belum ada kursus yang tersedia untuk kategori ini.</p>
+                <div class="col-span-full text-center py-20 bg-surface border border-border rounded-2xl border-dashed">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 text-secondary mb-4">
+                        <i class="uil uil-book-open text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-primary">Tidak ada kursus ditemukan</h3>
+                    <p class="text-secondary mt-1 max-w-sm mx-auto">Kami belum memiliki kursus untuk kategori atau kata kunci ini.</p>
+                    <a href="{{ route('landingpage') }}" class="inline-block mt-4 text-sm font-semibold text-primary underline">Lihat semua kursus</a>
                 </div>
             @endforelse
         </div>
 
-        <div class="mt-8">
+        <div class="mt-12">
             {{ $courses->links() }}
         </div>
     </div>
 </div>
-
-<style>
-    .truncate-2-lines {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        min-height: 2.5rem; /* Disesuaikan agar konsisten */
-    }
-    @media (min-width: 640px) {
-        .truncate-2-lines {
-            min-height: 2.8rem; /* Sedikit lebih tinggi untuk font sm:text-md */
-        }
-    }
-</style>

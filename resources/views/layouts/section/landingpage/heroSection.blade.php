@@ -12,17 +12,17 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="relative w-full my-8" id="carousel-container">
-        <div class="overflow-hidden rounded-lg border-2 border-blue-100">
+        <div class="overflow-hidden rounded-2xl border border-border shadow-sm">
             <div class="flex transition-transform duration-500 ease-in-out" id="carousel-track">
                 
                 @foreach ($images as $index => $image)
                     <div class="w-full flex-shrink-0">
                         <img 
-                            src="{{ $image ?? 'https://placehold.co/1280x384/3B82F6/FFFFFF?text=Kelas+Unggulan' }}" 
+                            src="{{ $image ?? 'https://placehold.co/1280x384/18181b/ffffff?text=Kelas+Unggulan' }}" 
                             alt="Promosi Kursus {{ $index + 1 }}" 
                             {{-- Tinggi karosel sekarang responsif --}}
                             class="w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover"
-                            onerror="this.onerror=null;this.src='https://placehold.co/1280x384/DBEAFE/1E3A8A?text=Gambar+Tidak+Tersedia';"
+                            onerror="this.onerror=null;this.src='https://placehold.co/1280x384/262626/ededed?text=Gambar+Tidak+Tersedia';"
                         >
                     </div>
                 @endforeach
@@ -30,11 +30,11 @@
             </div>
         </div>
 
-        <button id="prev-slide" class="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full border-2 border-blue-100 transition">
-            <i class="uil uil-angle-left-b text-xl sm:text-2xl"></i>
+        <button id="prev-slide" class="absolute top-1/2 left-4 -translate-y-1/2 bg-surface/80 backdrop-blur text-primary hover:bg-surface p-3 rounded-full border border-border shadow-lg transition-all hover:scale-105">
+            <i class="uil uil-angle-left-b text-xl"></i>
         </button>
-        <button id="next-slide" class="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full border-2 border-blue-100 transition">
-            <i class="uil uil-angle-right-b text-xl sm:text-2xl"></i>
+        <button id="next-slide" class="absolute top-1/2 right-4 -translate-y-1/2 bg-surface/80 backdrop-blur text-primary hover:bg-surface p-3 rounded-full border border-border shadow-lg transition-all hover:scale-105">
+            <i class="uil uil-angle-right-b text-xl"></i>
         </button>
     </div>
 </div>

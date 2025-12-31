@@ -1,49 +1,102 @@
 <!DOCTYPE html>
-<html lang="id" class="h-full bg-white">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Akun Siswa - LMS Laravel</title>
+    <title>Daftar Akun - LMS Laravel</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>body { font-family: 'Poppins', sans-serif; }</style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#ffffff',
+                        surface: '#ffffff',
+                        border: '#e4e4e7',
+                        primary: '#18181b',
+                        secondary: '#71717a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
-<body class="h-full flex items-center justify-center p-4">
-    <div class="w-full max-w-md">
-        <div class="text-center mb-6">
-            <h1 class="text-3xl font-bold text-black">Buat Akun Baru</h1>
-            <p class="text-black mt-1">Daftarkan diri Anda untuk mengakses kursus kami.</p>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4 font-sans text-primary">
+    <div class="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold tracking-tight mb-2">Buat Akun Baru</h1>
+            <p class="text-secondary text-sm">Bergabunglah untuk mulai belajar skill baru.</p>
         </div>
-        <div class="bg-white p-8 rounded-lg border border-blue-100">
-            <form action="{{ route('student.register') }}" method="POST" class="space-y-4">
-                @csrf
-                <div>
-                    <label for="name" class="block text-sm font-medium text-black">Nama Lengkap</label>
-                    <input type="text" name="name" id="name" value="{{ old('name') }}" required class="mt-1 block w-full px-3 py-2 border @error('name') border-blue-500 @else border-blue-100 @enderror rounded-md focus:outline-none focus:border-blue-500">
-                    @error('name') <p class="text-black text-xs mt-1">{{ $message }}</p> @enderror
+
+        <form action="{{ route('student.register') }}" method="POST" class="space-y-4">
+            @csrf
+            
+            <div>
+                <label for="name" class="block text-sm font-medium mb-1.5">Nama Lengkap</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+                        <i class="uil uil-user"></i>
+                    </span>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}" required 
+                        class="w-full pl-10 pr-4 py-2.5 rounded-lg border @error('name') border-red-500 @else border-gray-300 @enderror focus:border-black focus:ring-1 focus:ring-black outline-none transition-all placeholder-gray-400"
+                        placeholder="John Doe">
                 </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-black">Email</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" required class="mt-1 block w-full px-3 py-2 border @error('email') border-blue-500 @else border-blue-100 @enderror rounded-md focus:outline-none focus:border-blue-500">
-                    @error('email') <p class="text-black text-xs mt-1">{{ $message }}</p> @enderror
+                @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium mb-1.5">Email</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+                        <i class="uil uil-envelope"></i>
+                    </span>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}" required 
+                        class="w-full pl-10 pr-4 py-2.5 rounded-lg border @error('email') border-red-500 @else border-gray-300 @enderror focus:border-black focus:ring-1 focus:ring-black outline-none transition-all placeholder-gray-400"
+                        placeholder="nama@email.com">
                 </div>
-                <div>
-                    <label for="password" class="block text-sm font-medium text-black">Password</label>
-                    <input type="password" name="password" id="password" required class="mt-1 block w-full px-3 py-2 border @error('password') border-blue-500 @else border-blue-100 @enderror rounded-md focus:outline-none focus:border-blue-500">
-                    @error('password') <p class="text-black text-xs mt-1">{{ $message }}</p> @enderror
+                @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium mb-1.5">Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+                        <i class="uil uil-padlock"></i>
+                    </span>
+                    <input type="password" name="password" id="password" required 
+                        class="w-full pl-10 pr-4 py-2.5 rounded-lg border @error('password') border-red-500 @else border-gray-300 @enderror focus:border-black focus:ring-1 focus:ring-black outline-none transition-all placeholder-gray-400"
+                        placeholder="••••••••">
                 </div>
-                <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-black">Konfirmasi Password</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" required class="mt-1 block w-full px-3 py-2 border border-blue-100 rounded-md focus:outline-none focus:border-blue-500">
+                @error('password') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+            </div>
+
+            <div>
+                <label for="password_confirmation" class="block text-sm font-medium mb-1.5">Konfirmasi Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+                        <i class="uil uil-check-circle"></i>
+                    </span>
+                    <input type="password" name="password_confirmation" id="password_confirmation" required 
+                        class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 focus:border-black focus:ring-1 focus:ring-black outline-none transition-all placeholder-gray-400"
+                        placeholder="••••••••">
                 </div>
-                <div>
-                    <button type="submit" class="w-full mt-2 flex justify-center py-2 px-4 border border-blue-600 rounded-md font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                        Daftar
-                    </button>
-                </div>
-            </form>
-            <p class="text-center text-sm text-black mt-6">
-                Sudah punya akun? <a href="{{ route('student.login') }}" class="font-medium text-blue-600 hover:text-blue-700">Login di sini</a>
+            </div>
+
+            <button type="submit" class="w-full mt-2 py-2.5 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                Daftar & Mulai Belajar
+            </button>
+        </form>
+
+        <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+            <p class="text-sm text-secondary">
+                Sudah punya akun? 
+                <a href="{{ route('student.login') }}" class="font-semibold text-black hover:underline">Masuk di sini</a>
             </p>
         </div>
     </div>
