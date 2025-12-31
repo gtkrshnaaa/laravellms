@@ -2,28 +2,18 @@
 @section('title', 'Edit Topik')
 
 @section('content')
-<a href="{{ route('course_admin.management.courses.show', $course) }}" class="text-sm text-main-red hover:underline mb-4 inline-block transition duration-200">
-    < Kembali ke Kelola Kursus
-</a>
-<h1 class="text-2xl font-bold text-dark-text mb-6">Edit Topik: {{ $topic->title }}</h1>
-<div class="bg-white p-6 rounded-lg border-2 border-gray-100">
-    <form action="{{ route('course_admin.management.courses.topics.update', [$course, $topic]) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="mb-4">
-            <label for="title" class="block text-dark-text font-medium mb-2">Judul Topik</label>
-            <input type="text" name="title" id="title" class="w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:border-main-red focus:ring-main-red @error('title') border-gray-500 @enderror" value="{{ old('title', $topic->title ?? '') }}" required>
-            @error('title') <p class="text-gray-500 text-sm mt-1">{{ $message }}</p> @enderror
-        </div>
-        <div class="mb-6">
-            <label for="order" class="block text-dark-text font-medium mb-2">Urutan</label>
-            <input type="number" name="order" id="order" class="w-full border border-gray-300 px-3 py-2 rounded-md shadow-sm focus:border-main-red focus:ring-main-red @error('order') border-gray-500 @enderror" value="{{ old('order', $topic->order ?? '0') }}" required>
-            @error('order') <p class="text-gray-500 text-sm mt-1">{{ $message }}</p> @enderror
-        </div>
-        <div class="flex items-center">
-            <button type="submit" class="bg-main-red hover:bg-dark-red text-white font-bold py-2 px-4 rounded-md transition duration-300">Simpan Topik</button>
-            <a href="{{ route('course_admin.management.courses.show', $course) }}" class="ml-4 text-light-text hover:text-dark-text transition duration-200">Batal</a>
-        </div>
-    </form>
+<div class="max-w-xl mx-auto">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold text-primary">Edit Topik</h2>
+        <p class="text-secondary text-sm">Update informasi topik.</p>
+    </div>
+
+    <div class="p-6 bg-surface border border-border rounded-xl shadow-sm">
+        <form action="{{ route('course_admin.management.courses.topics.update', [$course, $topic]) }}" method="POST">
+            @csrf
+            @method('PUT')
+            @include('course_admin.dashboard.course_management.topics._form')
+        </form>
+    </div>
 </div>
 @endsection
