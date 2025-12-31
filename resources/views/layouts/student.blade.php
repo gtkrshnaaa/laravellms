@@ -219,16 +219,27 @@
             <a href="{{ route('student.certificates.index') }}" class="text-sm font-medium text-secondary hover:text-primary transition-colors py-2 border-b border-border/10">
                 Sertifikat
             </a>
+            @auth('student')
             <a href="{{ route('student.profile.edit') }}" class="text-sm font-medium text-secondary hover:text-primary transition-colors py-2 border-b border-border/10">
                 Profil: {{ Auth::guard('student')->user()->name }}
             </a>
             
             <form method="POST" action="{{ route('student.logout') }}" class="py-2">
                 @csrf
-                <button type="submit" class="text-sm font-medium text-red-500 hover:text-red-400 transition-colors w-full text-left">
+                <button type="submit" class="text-sm font-medium text-red-500 hover:text-red-600 transition-colors w-full text-left">
                     Logout
                 </button>
             </form>
+            @else
+            <div class="flex flex-col gap-3 py-2">
+                <a href="{{ route('student.login') }}" class="text-center w-full py-2.5 rounded-lg border border-primary text-primary font-bold text-sm hover:bg-primary/5 transition-colors">
+                    Login
+                </a>
+                <a href="{{ route('student.register') }}" class="text-center w-full py-2.5 rounded-lg bg-primary text-white font-bold text-sm hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20">
+                    Daftar
+                </a>
+            </div>
+            @endauth
         </div>
     </nav>
 
