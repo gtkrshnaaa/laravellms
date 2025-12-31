@@ -4,29 +4,43 @@
 
 @section('content')
     <div class="mb-8">
-        <h2 class="text-3xl font-bold text-primary mb-2">Halo, {{ $lecturer->name }}!</h2>
-        <p class="text-secondary">Selamat datang di panel dosen. Berikut adalah ringkasan aktivitas Anda.</p>
+        <h2 class="text-3xl font-bold text-primary tracking-tight">Dashboard Dosen</h2>
+        <p class="text-secondary mt-1">Pantau aktivitas pengajaran dan interaksi dengan mahasiswa.</p>
     </div>
 
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <!-- Widget 1: Total Courses -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Kursus Diampu</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $totalCourses }}</p>
-                <span class="text-xs text-blue-400 mb-1">Kelas</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600">
+                    <i class="uil uil-presentation-play text-xl"></i>
+                </div>
+                <span class="text-xs font-medium text-indigo-500 bg-indigo-500/10 px-2 py-1 rounded-full">Aktif</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Total Kursus Diampu</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $totalCourses }}</p>
+            </div>
+             <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-indigo-500 h-1 rounded-full" style="width: 55%"></div>
             </div>
         </div>
 
         <!-- Widget 2: Total Students -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Siswa</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $totalStudents }}</p>
-                <span class="text-xs text-purple-400 mb-1">Mahasiswa</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-600">
+                    <i class="uil uil-user-check text-xl"></i>
+                </div>
+                 <span class="text-xs font-medium text-pink-500 bg-pink-500/10 px-2 py-1 rounded-full">Total</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Total Mahasiswa</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $totalStudents }}</p>
+            </div>
+             <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-pink-500 h-1 rounded-full" style="width: 80%"></div>
             </div>
         </div>
     </div>

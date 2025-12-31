@@ -2,30 +2,52 @@
 @extends('layouts.course_admin')
 @section('title', 'Dashboard')
 @section('content')
-    <div class="mb-8">
-        <h2 class="text-3xl font-bold text-primary mb-2">Halo, {{ auth('course_admin')->user()->name }}!</h2>
-        <p class="text-secondary">Selamat datang kembali. Berikut adalah ringkasan aktivitas kursus Anda.</p>
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+            <h2 class="text-3xl font-bold text-primary tracking-tight">Dashboard Instruktur</h2>
+            <p class="text-secondary mt-1">Kelola materi dan pantau perkembangan siswa Anda.</p>
+        </div>
+        <div class="flex gap-3">
+             <a href="{{ route('course_admin.courses.index') }}" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-background rounded-lg text-sm font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl">
+                <i class="uil uil-plus-circle"></i> Buat Kursus Baru
+            </a>
+        </div>
     </div>
 
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <!-- Widget 1: Total Courses -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Kursus Anda</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $stats['total_courses'] }}</p>
-                <span class="text-xs text-blue-400 mb-1">Kelas</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+             <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
+                    <i class="uil uil-book-open text-xl"></i>
+                </div>
+                <span class="text-xs font-medium text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full">Aktif</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Total Kursus Anda</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $stats['total_courses'] }}</p>
+            </div>
+             <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-blue-500 h-1 rounded-full" style="width: 60%"></div>
             </div>
         </div>
 
         <!-- Widget 2: Total Students -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Siswa</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $stats['total_students'] }}</p>
-                <span class="text-xs text-green-400 mb-1">Pendaftar</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600">
+                    <i class="uil uil-users-alt text-xl"></i>
+                </div>
+                <!-- Logic placeholder for growth -->
+                <span class="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full">+5 Siswa Baru</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Total Siswa Terdaftar</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $stats['total_students'] }}</p>
+            </div>
+            <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-green-500 h-1 rounded-full" style="width: 75%"></div>
             </div>
         </div>
     </div>

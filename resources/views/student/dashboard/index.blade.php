@@ -5,38 +5,50 @@
 
 @section('content')
     <div class="mb-8">
-        <h1 class="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">Halo, {{ $student->name }}!</h1>
-        <p class="text-secondary text-lg">Selamat datang kembali! Mari lanjutkan progres belajarmu hari ini.</p>
+        <h1 class="text-3xl font-bold text-primary tracking-tight">Halo, {{ $student->name }}!</h1>
+        <p class="text-secondary mt-1">Selamat datang kembali! Mari lanjutkan progres belajarmu hari ini.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {{-- Total Kursus Diikuti --}}
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Kursus Diikuti</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $totalEnrolledCourses }}</p>
-                <span class="text-xs text-blue-500 mb-1">Kelas</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
+                    <i class="uil uil-book-reader text-xl"></i>
+                </div>
+                 <span class="text-xs font-medium text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full">Aktif</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Kursus Diikuti</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $totalEnrolledCourses }}</p>
             </div>
         </div>
 
         {{-- Kursus Selesai (100%) --}}
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Kursus Selesai</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $completedCoursesCount }}</p>
-                <span class="text-xs text-green-500 mb-1">Tuntas</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600">
+                    <i class="uil uil-check-circle text-xl"></i>
+                </div>
+                 <span class="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full">Selesai</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Kursus Tuntas</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $completedCoursesCount }}</p>
             </div>
         </div>
 
         {{-- Sertifikat Diperoleh --}}
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-yellow-500/10 rounded-full blur-2xl group-hover:bg-yellow-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Sertifikat</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $totalCertificates }}</p>
-                <span class="text-xs text-yellow-500 mb-1">Penghargaan</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+             <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-600">
+                    <i class="uil uil-award text-xl"></i>
+                </div>
+                 <span class="text-xs font-medium text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded-full">Prestasi</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Sertifikat</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $totalCertificates }}</p>
             </div>
         </div>
     </div>

@@ -3,50 +3,88 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="mb-8">
-        <h2 class="text-3xl font-bold text-primary mb-2">Selamat Datang, {{ auth('sysadmin')->user()->name }}!</h2>
-        <p class="text-secondary">Ringkasan performa sistem LMS Anda hari ini.</p>
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+            <h2 class="text-3xl font-bold text-primary tracking-tight">Dashboard Sistem</h2>
+            <p class="text-secondary mt-1">Ringkasan performa dan aktivitas platform hari ini.</p>
+        </div>
+        <div class="flex gap-3">
+            <a href="{{ route('sysadmin.manage_course.index') }}" class="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-lg text-sm font-medium text-primary hover:bg-white hover:border-dray-300 transition-all shadow-sm">
+                <i class="uil uil-book-open"></i> Kelola Kursus
+            </a>
+            <a href="{{ route('sysadmin.manage_user.index') }}" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-background rounded-lg text-sm font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl">
+                <i class="uil uil-users-alt"></i> Kelola User
+            </a>
+        </div>
     </div>
 
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <!-- Widget 1: Courses -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Kursus</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $contentStats['courses'] }}</p>
-                <span class="text-xs text-blue-400 mb-1">Kelas</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
+                    <i class="uil uil-books text-xl"></i>
+                </div>
+                <span class="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full">+2.5%</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Total Kursus</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $contentStats['courses'] }}</p>
+            </div>
+            <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-blue-500 h-1 rounded-full" style="width: 70%"></div>
             </div>
         </div>
 
         <!-- Widget 2: Students -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Siswa</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $userStats['students'] }}</p>
-                <span class="text-xs text-purple-400 mb-1">Akun</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-600">
+                    <i class="uil uil-student text-xl"></i>
+                </div>
+                 <span class="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-1 rounded-full">+12%</span>
+            </div>
+             <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Total Siswa</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $userStats['students'] }}</p>
+            </div>
+            <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-purple-500 h-1 rounded-full" style="width: 85%"></div>
             </div>
         </div>
 
         <!-- Widget 3: Lecturers -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Total Dosen</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $userStats['lecturers'] }}</p>
-                <span class="text-xs text-green-400 mb-1">Pengajar</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600">
+                    <i class="uil uil-user-check text-xl"></i>
+                </div>
+                <span class="text-xs font-medium text-secondary bg-secondary/10 px-2 py-1 rounded-full">Stabil</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Total Dosen</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $userStats['lecturers'] }}</p>
+            </div>
+             <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-green-500 h-1 rounded-full" style="width: 45%"></div>
             </div>
         </div>
 
         <!-- Widget 4: Course Admins -->
-        <div class="bg-surface border border-border p-6 rounded-xl relative overflow-hidden group hover:border-primary/20 shadow-sm hover:shadow-md transition-all duration-300">
-            <div class="absolute -right-6 -top-6 w-24 h-24 bg-red-500/10 rounded-full blur-2xl group-hover:bg-red-500/20 transition-colors"></div>
-            <h3 class="text-secondary text-xs uppercase tracking-widest font-bold mb-2">Course Admin</h3>
-            <div class="flex items-end gap-2">
-                <p class="text-4xl font-bold text-primary font-mono">{{ $userStats['course_admins'] }}</p>
-                <span class="text-xs text-red-500 mb-1">Staff</span>
+        <div class="bg-surface border border-border p-6 rounded-2xl relative overflow-hidden group hover:border-primary/20 shadow-sm transition-all duration-300">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600">
+                    <i class="uil uil-user-square text-xl"></i>
+                </div>
+                <span class="text-xs font-medium text-secondary bg-secondary/10 px-2 py-1 rounded-full">Admin</span>
+            </div>
+            <div class="mb-1">
+                <h3 class="text-secondary text-sm font-medium">Course Admin</h3>
+                <p class="text-3xl font-bold text-primary tracking-tight">{{ $userStats['course_admins'] }}</p>
+            </div>
+             <div class="w-full bg-border/50 h-1 rounded-full mt-4 overflow-hidden">
+                <div class="bg-orange-500 h-1 rounded-full" style="width: 30%"></div>
             </div>
         </div>
     </div>
