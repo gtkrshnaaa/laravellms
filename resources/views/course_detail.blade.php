@@ -130,9 +130,9 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
                     <div class="p-5">
-                         <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center justify-between mb-6">
                             <span class="text-3xl font-bold text-primary">Gratis</span>
-                            <span class="text-xs font-semibold text-green-700 bg-green-100 border border-green-200 px-2.5 py-1 rounded-full">Kursus Terbuka</span>
+                            <span class="text-xs font-bold text-green-600 dark:text-green-400 bg-green-500/10 border border-green-500/20 px-3 py-1 rounded-full uppercase tracking-wide">Kursus Terbuka</span>
                         </div>
 
                         {{-- CTA Button --}}
