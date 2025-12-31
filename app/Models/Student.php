@@ -29,6 +29,7 @@ class Student extends Authenticatable
         'name',
         'email',
         'password',
+        'division',
     ];
 
     /**

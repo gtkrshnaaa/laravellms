@@ -14,6 +14,9 @@
     <a href="{{ route('course_admin.management.courses.index') }}" class="block px-4 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('course_admin.management.*') ? 'bg-primary text-background' : 'text-secondary hover:text-primary hover:bg-secondary/10' }} transition-colors">
         Manajemen Kursus
     </a>
+    <a href="{{ route('course_admin.analytics.index') }}" class="block px-4 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('course_admin.analytics.*') ? 'bg-primary text-background' : 'text-secondary hover:text-primary hover:bg-secondary/10' }} transition-colors">
+        Analitik & Laporan
+    </a>
 
     <div class="mt-8 mx-4 p-4 rounded-lg bg-surface border border-border">
         <p class="text-xs font-medium text-primary mb-2">Pratinjau</p>

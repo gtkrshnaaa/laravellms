@@ -7,9 +7,14 @@
         <h2 class="text-2xl font-bold text-primary">Manajemen Kursus</h2>
         <p class="text-secondary text-sm">Kelola materi pembelajaran, topik, dan siswa untuk kursus Anda.</p>
     </div>
-    <a href="{{ route('course_admin.management.courses.create') }}" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg font-semibold text-xs text-background uppercase tracking-widest hover:bg-primary/90 active:bg-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition ease-in-out duration-150">
-        + Buat Kursus Baru
-    </a>
+    <div class="flex gap-2">
+        <a href="{{ route('course_admin.management.batch_enrollment.create') }}" class="inline-flex items-center px-4 py-2 bg-secondary border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-secondary/90 active:bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 transition ease-in-out duration-150">
+            Batch Enroll
+        </a>
+        <a href="{{ route('course_admin.management.courses.create') }}" class="inline-flex items-center px-4 py-2 bg-primary border border-transparent rounded-lg font-semibold text-xs text-background uppercase tracking-widest hover:bg-primary/90 active:bg-primary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition ease-in-out duration-150">
+            + Buat Kursus Baru
+        </a>
+    </div>
 </div>
 
 <div class="bg-surface border border-border rounded-xl shadow-sm overflow-hidden">

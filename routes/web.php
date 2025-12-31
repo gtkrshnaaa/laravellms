@@ -179,6 +179,13 @@ Route::prefix('course-admin')->name('course_admin.')->group(function () {
 
             Route::post('courses/{course}/follow-up-links', [CourseAdminManageFollowUpLinkController::class, 'store'])->name('courses.follow_up_links.store');
             Route::delete('follow-up-links/{link}', [CourseAdminManageFollowUpLinkController::class, 'destroy'])->name('follow_up_links.destroy');
+
+            // --- Batch Enrollment ---
+            Route::get('batch-enrollment/create', [\App\Http\Controllers\CourseAdmin\CourseManagement\CourseAdminBatchEnrollmentController::class, 'create'])->name('batch_enrollment.create');
+            Route::post('batch-enrollment', [\App\Http\Controllers\CourseAdmin\CourseManagement\CourseAdminBatchEnrollmentController::class, 'store'])->name('batch_enrollment.store');
+        
+            // --- Analytics ---
+            Route::get('analytics', [\App\Http\Controllers\CourseAdmin\CourseAdminAnalyticsController::class, 'index'])->name('analytics.index');
         });
     
     });
@@ -263,6 +270,7 @@ Route::prefix('student')->name('student.')->group(function () {
         // === RUTE UNTUK SERTIFIKAT ===
         Route::get('my-certificates', [StudentCertificateController::class, 'index'])->name('certificates.index'); 
         Route::get('course/{course}/certificate', [StudentCertificateController::class, 'show'])->name('course.certificate');
+        Route::get('course/{course}/certificate/download', [StudentCertificateController::class, 'download'])->name('course.certificate.download');
     });
 
 });
