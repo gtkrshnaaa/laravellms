@@ -7,13 +7,10 @@ use App\Http\Controllers\PublicPage\PublicPageLandingPageController;
 use App\Http\Controllers\PublicPage\PublicCertificateController;
 
 Route::get('/', [PublicPageLandingPageController::class, 'index'])->name('landingpage');
-Route::get('/course/{course}', [PublicPageLandingPageController::class, 'show'])->name('course.show.public');
+// Route::get('/course/{course}', [PublicPageLandingPageController::class, 'show'])->name('course.show.public');
+// Route::redirect('/', '/student/login'); // REMOVED redirect
+
 Route::get('/certificate/verify/{token}', [PublicCertificateController::class, 'show'])->name('certificate.verify.public');
-
-
-
-
-
 
 // == SYSADMIN AREA ==
 use App\Http\Controllers\SysAdmin\Auth\SysAdminLoginController;
@@ -24,8 +21,6 @@ use App\Http\Controllers\SysAdmin\SysAdminManageLecturerController;
 use App\Http\Controllers\SysAdmin\SysAdminManageStudentController;
 use App\Http\Controllers\SysAdmin\SysAdminManageCourseCategoryController;
 use App\Http\Controllers\SysAdmin\SysAdminManageCourseSubCategoryController;
-
-
 
 
 Route::prefix('sysadmin')->name('sysadmin.')->group(function () {
@@ -213,13 +208,9 @@ Route::prefix('lecturer')->name('lecturer.')->group(function () {
     });
 });
 
-
-
-
-
 // == STUDENT AREA ==
 use App\Http\Controllers\Student\Auth\StudentLoginController;
-use App\Http\Controllers\Student\Auth\StudentRegisterController;
+// use App\Http\Controllers\Student\Auth\StudentRegisterController; // Removing Register Controller
 use App\Http\Controllers\Student\StudentDashboardController;
 use App\Http\Controllers\Student\StudentCourseController;
 use App\Http\Controllers\Student\StudentEnrolledCourseController;
@@ -231,9 +222,9 @@ use App\Http\Controllers\Student\StudentCertificateController;
 Route::prefix('student')->name('student.')->group(function () {
     
 
-    // Registrasi
-    Route::get('register', [StudentRegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::post('register', [StudentRegisterController::class, 'register']);
+    // Registrasi (DISABLED for Internal LMS)
+    // Route::get('register', [StudentRegisterController::class, 'showRegistrationForm'])->name('register');
+    // Route::post('register', [StudentRegisterController::class, 'register']);
 
     // Login
     Route::get('login', [StudentLoginController::class, 'showLoginForm'])->name('login');
